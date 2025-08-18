@@ -1,0 +1,926 @@
+<!doctype html>
+<html lang="en">
+
+<!-- Head -->
+
+<head>
+    <!-- Page Meta Tags-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
+    <link rel="mask-icon" href="./assets/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Google Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="./assets/css/libs.bundle.css" />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="./assets/css/theme.bundle.css" />
+
+    <!-- Fix for custom scrollbar if JS is disabled-->
+    <noscript>
+        <style>
+            /**
+          * Reinstate scrolling for non-JS clients
+          */
+            .simplebar-content-wrapper {
+                overflow: auto;
+            }
+        </style>
+    </noscript>
+
+    <!-- Page Title -->
+    <title>Form Haji - Dashboard</title>
+
+</head>
+<style>
+    .badge-action {
+        cursor: pointer;
+        /* Jadi icon terasa bisa diklik */
+        transition: all 0.2s ease-in-out;
+        /* Animasi halus */
+    }
+
+    .badge-action:hover {
+        background-color: rgba(82, 82, 82, 0.1);
+        /* Warna latar saat hover */
+        transform: scale(1.3);
+        /* Sedikit membesar */
+    }
+</style>
+
+<body class="">
+
+    <!-- Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light border-bottom py-0 fixed-top bg-white">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex justify-content-start align-items-center border-end" href="./index.html">
+                <div class="d-flex align-items-center">
+                    <svg class="f-w-5 me-2 text-primary d-flex align-self-center lh-1"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 203.58 182">
+                        <path
+                            d="M101.66,41.34C94.54,58.53,88.89,72.13,84,83.78A21.2,21.2,0,0,1,69.76,96.41,94.86,94.86,0,0,0,26.61,122.3L81.12,0h41.6l55.07,123.15c-12-12.59-26.38-21.88-44.25-26.81a21.22,21.22,0,0,1-14.35-12.69c-4.71-11.35-10.3-24.86-17.53-42.31Z"
+                            fill="currentColor" fill-rule="evenodd" fill-opacity="0.5" />
+                        <path
+                            d="M0,182H29.76a21.3,21.3,0,0,0,18.56-10.33,63.27,63.27,0,0,1,106.94,0A21.3,21.3,0,0,0,173.82,182h29.76c-22.66-50.84-49.5-80.34-101.79-80.34S22.66,131.16,0,182Z"
+                            fill="currentColor" fill-rule="evenodd" />
+                    </svg>
+                    <span class="fw-black text-uppercase tracking-wide fs-6 lh-1">PANDAIHAJI</span>
+                </div>
+            </a>
+            <div class="d-flex justify-content-between align-items-center flex-grow-1 navbar-actions">
+
+                <!-- Search Bar and Menu Toggle-->
+                <div class="d-flex align-items-center">
+
+                    <!-- Menu Toggle-->
+                    <div
+                        class="menu-toggle cursor-pointer me-4 text-primary-hover transition-color disable-child-pointer">
+                        <!-- Hamburger untuk Close menu -->
+                        <i class="ri-menu-line ri-lg fold align-middle" data-bs-toggle="tooltip"
+                            data-bs-placement="right" title="Close menu"></i>
+
+                        <!-- Hamburger untuk Open menu -->
+                        <i class="ri-menu-line ri-lg unfold align-middle" data-bs-toggle="tooltip"
+                            data-bs-placement="right" title="Open Menu"></i>
+                    </div>
+                    <!-- / Menu Toggle-->
+                </div>
+                <!-- / Search Bar and Menu Toggle-->
+
+                <!-- Right Side Widgets-->
+                <div class="d-flex align-items-center">
+
+                    <!-- Profile Menu-->
+                    <div class="dropdown ms-1">
+                        <button class="btn btn-link p-0 position-relative" type="button" id="profileDropdown"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <picture>
+                                <img class="f-w-10 rounded-circle" src="./assets/images/profile-small.jpeg"
+                                    alt="HTML Bootstrap Admin Template by Pixel Rocket">
+                            </picture>
+                            <span
+                                class="position-absolute bottom-0 start-75 p-1 bg-success border border-3 border-white rounded-circle">
+                                <span class="visually-hidden">New alerts</span>
+                            </span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-md dropdown-menu-end" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item d-flex align-items-center" href="#">Edit Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li class="d-flex py-2 align-items-start">
+                                <button class="btn-icon bg-primary-faded text-primary fw-bolder me-3">J</button>
+                                <div class="d-flex align-items-start justify-content-between flex-grow-1">
+                                    <div>
+                                        <p class="lh-1 mb-2 fw-semibold text-body">John Daniels</p>
+                                        <p class="text-muted lh-1 mb-2 small">john@email.com</p>
+                                    </div>
+                                    <small class="badge bg-success-faded text-success rounded-pill">Operator</small>
+                                </div>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item d-flex align-items-center" href="#">Logout</a></li>
+                        </ul>
+                    </div> <!-- / Profile Menu-->
+
+                </div>
+                <!-- / Notifications & Profile-->
+            </div>
+        </div>
+    </nav> <!-- / Navbar-->
+
+    <!-- Page Content -->
+    <main id="main">
+
+        <!-- Breadcrumbs-->
+        <div class="bg-white border-bottom py-3 mb-2">
+            <div
+                class="container-fluid d-flex justify-content-between align-items-start align-items-md-center flex-column flex-md-row">
+                <nav class="mb-0" aria-label="breadcrumb">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                    </ol>
+                </nav>
+                <div class="d-flex justify-content-end align-items-center mt-3 mt-md-0">
+                    <a class="btn btn-sm btn-primary" href="#"><i class="ri-add-circle-line align-bottom"></i> Ajuan
+                        Baru</a>
+                    <a class="btn btn-sm btn-secondary-faded ms-2 text-body" href="#"><i
+                            class="ri-question-line align-bottom"></i> Help</a>
+                </div>
+            </div>
+        </div> <!-- / Breadcrumbs-->
+
+        <!-- Content-->
+        <section class="container-fluid">
+
+            <!-- Formulir Pembatalan -->
+            <div class="card mb-4 d-none">
+                <div class="card-header justify-content-between align-items-center d-flex">
+                    <h3 class="card-title m-0">Formulir Pembatalan</h3>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <!-- Nomor Porsi Haji -->
+                        <div class="mb-3">
+                            <label for="nomorPorsi" class="form-label">Nomor Porsi Haji</label>
+                            <input type="text" class="form-control" id="nomorPorsi"
+                                placeholder="Masukkan Nomor Porsi Haji">
+                        </div>
+
+                        <!-- Nama -->
+                        <div class="mb-3">
+                            <label for="nama" class="form-label">Nama</label>
+                            <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama Lengkap">
+                        </div>
+
+                        <!-- Bin/Binti -->
+                        <div class="mb-3">
+                            <label for="binBinti" class="form-label">Bin / Binti</label>
+                            <input type="text" class="form-control" id="binBinti" placeholder="Masukkan Bin/Binti">
+                        </div>
+
+                        <!-- Tempat, Tanggal Lahir -->
+                        <div class="mb-3">
+                            <label class="form-label">Tempat, Tanggal Lahir</label>
+                            <div class="row g-2">
+                                <!-- Tempat -->
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="tempatLahir"
+                                        placeholder="Masukkan Tempat Lahir">
+                                </div>
+                                <!-- Tanggal -->
+                                <div class="col-md-3">
+                                    <input type="date" class="form-control" id="tanggalLahir">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pekerjaan -->
+                        <div class="mb-3">
+                            <label for="pekerjaan" class="form-label">Pekerjaan</label>
+                            <input type="text" class="form-control" id="pekerjaan" placeholder="Masukkan Pekerjaan">
+                        </div>
+
+                        <!-- Alamat -->
+                        <div class="mb-3">
+                            <label for="alamat" class="form-label">Alamat</label>
+                            <textarea class="form-control" id="alamat" rows="3"
+                                placeholder="Masukkan Alamat Lengkap"></textarea>
+                        </div>
+
+                        <!-- Alasan Pembatalan -->
+                        <div class="mb-3">
+                            <label for="alasan" class="form-label">Alasan Pembatalan</label>
+                            <textarea class="form-control" id="alasan" rows="3"
+                                placeholder="Masukkan Alasan Pembatalan"></textarea>
+                        </div>
+
+                        <!-- Tombol Submit -->
+                        <button type="submit" class="btn btn-primary">Cetak Surat Pembatalan</button>
+                    </form>
+                </div>
+            </div>
+            <!-- /Formulir Pembatalan -->
+
+            <!-- Formulir Pelimpahan -->
+            <div class="card mb-4 d-none">
+                <div class="card-header justify-content-between align-items-center d-flex">
+                    <h3 class="card-title m-0">Formulir Pelimpahan</h3>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <!-- Nomor Porsi Haji -->
+                        <div class="mb-3">
+                            <label for="nomorPorsi" class="form-label">Nomor Porsi Haji</label>
+                            <input type="text" class="form-control" id="nomorPorsi"
+                                placeholder="Masukkan Nomor Porsi Haji">
+                        </div>
+
+                        <!-- Nama -->
+                        <div class="mb-3">
+                            <label for="nama" class="form-label">Nama</label>
+                            <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama Lengkap">
+                        </div>
+
+                        <!-- Bin/Binti -->
+                        <div class="mb-3">
+                            <label for="binBinti" class="form-label">Bin / Binti</label>
+                            <input type="text" class="form-control" id="binBinti" placeholder="Masukkan Bin/Binti">
+                        </div>
+
+                        <hr>
+
+                        <!-- Nama Penerima Pelimpahan -->
+                        <div class="mb-3">
+                            <label for="namaPenerima" class="form-label">Nama Penerima Pelimpahan</label>
+                            <input type="text" class="form-control" id="namaPenerima"
+                                placeholder="Masukkan Nama Penerima">
+                        </div>
+
+                        <!-- Bin/Binti Penerima -->
+                        <div class="mb-3">
+                            <label for="binBintiPenerima" class="form-label">Bin / Binti</label>
+                            <input type="text" class="form-control" id="binBintiPenerima"
+                                placeholder="Masukkan Bin/Binti Penerima">
+                        </div>
+
+                        <!-- Tempat, Tanggal Lahir -->
+                        <div class="mb-3">
+                            <label class="form-label">Tempat, Tanggal Lahir</label>
+                            <div class="row g-2">
+                                <!-- Tempat -->
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="tempatLahir"
+                                        placeholder="Masukkan Tempat Lahir">
+                                </div>
+                                <!-- Tanggal -->
+                                <div class="col-md-3">
+                                    <input type="date" class="form-control" id="tanggalLahir">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pekerjaan -->
+                        <div class="mb-3">
+                            <label for="pekerjaan" class="form-label">Pekerjaan</label>
+                            <input type="text" class="form-control" id="pekerjaan" placeholder="Masukkan Pekerjaan">
+                        </div>
+
+                        <!-- Alamat -->
+                        <div class="mb-3">
+                            <label for="alamat" class="form-label">Alamat</label>
+                            <textarea class="form-control" id="alamat" rows="3"
+                                placeholder="Masukkan Alamat Lengkap"></textarea>
+                        </div>
+
+                        <!-- Nomor HP -->
+                        <div class="mb-3">
+                            <label for="nomorHp" class="form-label">Nomor HP</label>
+                            <input type="tel" class="form-control" id="nomorHp" placeholder="Masukkan Nomor HP">
+                        </div>
+
+                        <!-- Alasan Pelimpahan -->
+                        <div class="mb-3">
+                            <label for="alasan" class="form-label">Alasan Pelimpahan</label>
+                            <select class="form-select" id="alasan">
+                                <option value="">Pilih Alasan</option>
+                                <option value="meninggal">Meninggal Dunia</option>
+                                <option value="sakit">Sakit Permanen</option>
+                            </select>
+                        </div>
+
+                        <!-- Tombol Submit -->
+                        <button type="submit" class="btn btn-primary">Cetak Surat Pelimpahan</button>
+                    </form>
+                </div>
+            </div>
+            <!-- /Formulir Pelimpahan -->
+
+            <!-- Page Title-->
+            <div class="d-none">
+                <h2 class="fs-3 fw-bold mb-2">Welcome back, Patricia Smith 👋</h2>
+                <p class="text-muted mb-5">Get a quick overview of your company's current status below, or click into
+                    one of
+                    the sections for a more detailed breakdown.</p>
+            </div>
+            <!-- / Page Title-->
+
+            <!-- Middle Row Widgets-->
+            <div class="row mb-4 mt-0">
+
+                <!-- Grafik Jumlah Pengajuan-->
+                <div class="col-12 col-xxl-4 d-none">
+                    <div class="card mb-4 h-100">
+                        <div class="card-header justify-content-between align-items-center d-flex">
+                            <h6 class="card-title m-0">Grafik Jumlah Pengajuan</h6>
+                            <div class="dropdown">
+                                <button class="btn btn-link dropdown-toggle dropdown-toggle-icon fw-bold p-0"
+                                    type="button" id="dropdownExpenses" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="ri-more-2-line"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown" aria-labelledby="dropdownExpenses">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-4 mt-2">
+                                <div class="d-flex align-items-center">
+                                    <h4 class="fs-3 fw-bold mb-0 me-3">Agustus : 55 Formulir</h4>
+                                    <span class="badge bg-success-faded text-success d-flex align-items-center ">
+                                        <span class="f-w-4 d-block me-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="w-100">
+                                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                                <polyline points="17 6 23 6 23 12"></polyline>
+                                            </svg>
+                                        </span>
+                                        + 12 Formulir
+                                    </span>
+                                </div>
+                                <div class="d-flex align-items-center ms-2 d-xxl-none">
+                                    <div class="d-flex align-items-center">
+                                        <span class="f-w-2 f-h-2 bg-primary d-block rounded-circle me-2"></span>
+                                        <span class="small text-muted">Pembatalan</span>
+                                    </div>
+                                    <div class="d-flex align-items-center ms-4">
+                                        <span class="f-w-2 f-h-2 bg-secondary-faded d-block rounded-circle me-2"></span>
+                                        <span class="small text-muted">Pelimpahan</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chart chart-md pt-2">
+                                <canvas id="chartBar"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- / Grafik Jumlah Pengajuan-->
+
+                <!-- Tabel Pembatalan-->
+                <div class="col-12 mb-3">
+                    <div class="card mb-4 h-100">
+                        <div class="card-header justify-content-between align-items-center d-flex">
+                            <h6 class="card-title m-0">Daftar Pembatalan</h6>
+                            <div class="d-flex">
+                                <!-- Search Bar-->
+                                <form class="d-flex bg-light rounded px-3 me-2">
+                                    <input class="form-control border-0 bg-transparent px-0 py-2 me-5 fw-bolder"
+                                        type="search" placeholder="Cari Nama / No HP" aria-label="Search">
+                                    <button class="btn btn-link p-0 text-muted" type="submit"><i
+                                            class="ri-search-2-line"></i></button>
+                                </form>
+                                <!-- / Search Bar-->
+                                <a href="#" class="btn btn-outline-secondary btn-sm text-body"><i
+                                        class="ri-download-2-line align-middle"></i> Export</a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table m-0 table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>No Hp</th>
+                                            <th>Tanggal</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <span class="fw-bolder">1</span>
+                                            </td>
+                                            <td>Patria Nelson</td>
+                                            <td class="text-muted">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="badge-action ri-whatsapp-line ri-lg me-2"></i>
+                                                    67895249441182
+                                                </div>
+                                            </td>
+                                            <td class="text-muted">24th June, 2021</td>
+                                            <td>
+                                                <span class="badge badge-action bg-warning-faded text-success">
+                                                    <i class="ri-edit-fill"></i>
+                                                </span>
+                                                <span class="badge badge-action bg-danger-faded text-success">
+                                                    <i class="ri-delete-bin-line"></i>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <nav>
+                                <ul class="pagination justify-content-end mt-3 mb-0">
+                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tabel Pembatalan-->
+
+                <!-- Tabel Pelimpahan-->
+                <div class="col-12 mb-3">
+                    <div class="card mb-4 h-100">
+                        <div class="card-header justify-content-between align-items-center d-flex">
+                            <h6 class="card-title m-0">Daftar Pelimpahan</h6>
+                            <div class="d-flex">
+                                <!-- Search Bar-->
+                                <form class="d-flex bg-light rounded px-3 me-2">
+                                    <input class="form-control border-0 bg-transparent px-0 py-2 me-5 fw-bolder"
+                                        type="search" placeholder="Cari Nama / No HP" aria-label="Search">
+                                    <button class="btn btn-link p-0 text-muted" type="submit"><i
+                                            class="ri-search-2-line"></i></button>
+                                </form>
+                                <!-- / Search Bar-->
+                                <a href="#" class="btn btn-outline-secondary btn-sm text-body"><i
+                                        class="ri-download-2-line align-middle"></i> Export</a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table m-0 table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>No Hp</th>
+                                            <th>Tanggal</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <span class="fw-bolder">1</span>
+                                            </td>
+                                            <td>Patria Nelson</td>
+                                            <td class="text-muted">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="badge-action ri-whatsapp-line ri-lg me-2"></i>
+                                                    67895249441182
+                                                </div>
+                                            </td>
+                                            <td class="text-muted">24th June, 2021</td>
+                                            <td>
+                                                <span class="badge badge-action bg-warning-faded text-success">
+                                                    <i class="ri-edit-fill"></i>
+                                                </span>
+                                                <span class="badge badge-action bg-danger-faded text-success">
+                                                    <i class="ri-delete-bin-line"></i>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <nav>
+                                <ul class="pagination justify-content-end mt-3 mb-0">
+                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tabel Pelimpahan-->
+
+            </div>
+            <!-- / Middle Row Widgets-->
+
+            <!-- Footer -->
+            <footer class="  footer">
+                <p class="small text-muted m-0">All rights reserved | © 2021</p>
+                <p class="small text-muted m-0">Template created by <a
+                        href="https://www.pixelrocket.store/">PixelRocket</a></p>
+            </footer>
+
+
+            <!-- Sidebar Menu Overlay-->
+            <div class="menu-overlay-bg"></div>
+            <!-- / Sidebar Menu Overlay-->
+
+            <!-- Modal Imports-->
+            <!-- Place your modal imports here-->
+
+            <!-- Default Example Modal Import-->
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Here goes modal body content
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Offcanvas Imports-->
+            <!-- Place your offcanvas imports here-->
+
+            <!-- Default Example Offcanvas Import-->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample"
+                aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <div>
+                        Some text as placeholder. In real life you can have the elements you have chosen. Like, text,
+                        images, lists, etc.
+                    </div>
+                    <div class="dropdown mt-3">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown">
+                            Dropdown button
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Activity Offcanvas Import-->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasActivity"
+                aria-labelledby="offcanvasActivityLabel">
+                <div class="offcanvas-header d-flex align-items-center justify-content-between">
+                    <h5 class="offcanvas-title" id="offcanvasActivityLabel">Activity</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="list-group list-group-flush">
+
+                        <li class="list-group-item pt-0 pb-5 list-group-activity d-flex align-items-start">
+                            <div class="avatar avatar-xs me-3 flex-shrink-0">
+                                <picture>
+                                    <img class="f-w-10 rounded-circle" src="./assets/images/profile-small-7.jpeg"
+                                        alt="">
+                                </picture>
+                                <span class="avatar-dot bg-success"></span>
+                            </div>
+                            <div class="d-flex flex-column flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <p class="fw-semibold mb-0 me-3">John Doe</p>
+                                    <span class="small d-block text-muted fw-bolder">5m ago</span>
+                                </div>
+                                <span class="small d-block text-muted">Submitted quarterly marketing report for
+                                    review.</span>
+                                <div
+                                    class="bg-light border rounded-md p-2 mt-2 d-flex justify-content-start align-items-start">
+                                    <div class="d-flex align-items-start me-3">
+                                        <i class="ri-file-word-line ri-2x lh-1 me-2 text-primary"></i>
+                                        <div>
+                                            <span class="d-block fw-bolder small">Year End Report</span>
+                                            <span class="text-muted d-block fs-xs">24KB</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item pt-0 pb-5 list-group-activity d-flex align-items-start">
+                            <div class="avatar avatar-xs me-3 flex-shrink-0">
+                                <picture>
+                                    <img class="f-w-10 rounded-circle" src="./assets/images/profile-small-2.jpeg"
+                                        alt="">
+                                </picture>
+                                <span class="avatar-dot bg-success"></span>
+                            </div>
+                            <div class="d-flex flex-column flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <p class="fw-semibold mb-0 me-3">Sally Field</p>
+                                    <span class="small d-block text-muted fw-bolder">1h ago</span>
+                                </div>
+                                <span class="small d-block text-muted">Marked project status as completed.</span>
+                            </div>
+                        </li>
+                        <li class="list-group-item pt-0 pb-5 list-group-activity d-flex align-items-start">
+                            <div class="avatar avatar-xs me-3 flex-shrink-0">
+                                <picture>
+                                    <img class="f-w-10 rounded-circle" src="./assets/images/profile-small-3.jpeg"
+                                        alt="">
+                                </picture>
+                                <span class="avatar-dot bg-success"></span>
+                            </div>
+                            <div class="d-flex flex-column flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <p class="fw-semibold mb-0 me-3">Mark Robinson</p>
+                                    <span class="small d-block text-muted fw-bolder">2h ago</span>
+                                </div>
+                                <span class="small d-block text-muted">Created 2 new products in Mens Shoes</span>
+                                <div
+                                    class="bg-light border rounded-md p-2 mt-2 d-flex justify-content-start align-items-start">
+                                    <picture class="me-2">
+                                        <img class="f-w-12 rounded" src="./assets/images/1.png" alt="">
+                                    </picture>
+                                    <picture>
+                                        <img class="f-w-12 rounded" src="./assets/images/3.png" alt="">
+                                    </picture>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item pt-0 pb-5 list-group-activity d-flex align-items-start">
+                            <div class="avatar avatar-xs me-3 flex-shrink-0">
+                                <picture>
+                                    <img class="f-w-10 rounded-circle" src="./assets/images/profile-small-4.jpeg"
+                                        alt="">
+                                </picture>
+                                <span class="avatar-dot bg-success"></span>
+                            </div>
+                            <div class="d-flex flex-column flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <p class="fw-semibold mb-0 me-3">Jeffrey Way</p>
+                                    <span class="small d-block text-muted fw-bolder">6h ago</span>
+                                </div>
+                                <span class="small d-block text-muted">Set user status as &#x27;offline&#x27;</span>
+                            </div>
+                        </li>
+
+                    </ul>
+                    <a href="#"
+                        class="btn btn-outline-secondary btn-sm text-body d-flex align-items-center justify-content-center py-3 mb-4">
+                        <span class="f-w-4 text-muted d-block me-2">
+                            <svg class="w-100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="feather feather-activity">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                            </svg>
+                        </span>
+                        View All Activity
+                    </a>
+                </div>
+            </div>
+            <!-- Message Offcanvas Import-->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasMessage"
+                aria-labelledby="offcanvasMessageLabel">
+                <div class="offcanvas-header position-relative">
+                    <div class="d-flex flex-column w-100">
+                        <h5 class="offcanvas-title mb-3" id="offcanvasMessageLabel">Company Meetup</h5>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="avatar-group me-4">
+                                <picture class="avatar-group-img">
+                                    <img class="f-w-10 rounded-circle" src="./assets/images/profile-small.jpeg"
+                                        alt="HTML Bootstrap Admin Template by Pixel Rocket">
+                                </picture>
+                                <picture class="avatar-group-img">
+                                    <img class="f-w-10 rounded-circle" src="./assets/images/profile-small-2.jpeg"
+                                        alt="HTML Bootstrap Admin Template by Pixel Rocket">
+                                </picture>
+                                <picture class="avatar-group-img">
+                                    <img class="f-w-10 rounded-circle" src="./assets/images/profile-small-3.jpeg"
+                                        alt="HTML Bootstrap Admin Template by Pixel Rocket">
+                                </picture>
+                                <picture class="avatar-group-img">
+                                    <img class="f-w-10 rounded-circle" src="./assets/images/profile-small-4.jpeg"
+                                        alt="HTML Bootstrap Admin Template by Pixel Rocket">
+                                </picture>
+                                <span class="small fw-bolder ms-2 text-muted opacity-90">+ 12 others</span>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-link dropdown-toggle dropdown-toggle-icon p-0" type="button"
+                                    id="dropdownTop" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="ri-settings-3-line text-muted ri-lg"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown" aria-labelledby="dropdownTop">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close text-reset position-absolute top-20 end-5"
+                        data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body h-100 d-flex justify-content-between flex-column pb-0">
+                    <div class="overflow-auto py-4">
+                        <div class="overflow-hidden">
+                            <!-- Messages-->
+                            <div class="d-flex align-items-end justify-content-start mb-4 flex-wrap">
+                                <div class="avatar avatar-xs me-3 flex-shrink-0">
+                                    <picture>
+                                        <img class="f-w-10 rounded-circle" src="./assets/images/profile-small-4.jpeg"
+                                            alt="HTML Bootstrap Admin Template by Pixel Rocket">
+                                    </picture>
+                                    <span class="avatar-dot bg-success"></span>
+                                </div>
+                                <div class="d-flex justify-content-start flex-column align-items-start col">
+                                    <small class="text-muted fs-xs fw-bolder"><span class="fw-bold">Patrick
+                                            Johnson</span> &middot; 2 mins ago</small>
+                                    <div class="bg-light p-3 mt-2 rounded-t-s-4 rounded-t-e-4 rounded-b-e-4">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-end justify-content-start mb-4 flex-wrap">
+                                <div class="d-flex justify-content-end flex-column align-items-end col">
+                                    <small class="text-muted fs-xs fw-bolder"><span class="fw-bold">You</span> &middot;
+                                        5 mins ago</small>
+                                    <div
+                                        class="bg-primary text-white p-3 mt-2 rounded-t-s-4 rounded-t-e-4 rounded-b-s-4">
+                                        Maecenas aliquet eu felis vel.
+                                    </div>
+                                </div>
+                                <div class="avatar avatar-xs ms-3 flex-shrink-0">
+                                    <picture>
+                                        <img class="f-w-10 rounded-circle" src="./assets/images/profile-small-3.jpeg"
+                                            alt="HTML Bootstrap Admin Template by Pixel Rocket">
+                                    </picture>
+                                    <span class="avatar-dot bg-success"></span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-end justify-content-start mb-4 flex-wrap">
+                                <div class="avatar avatar-xs me-3 flex-shrink-0">
+                                    <picture>
+                                        <img class="f-w-10 rounded-circle" src="./assets/images/profile-small-4.jpeg"
+                                            alt="HTML Bootstrap Admin Template by Pixel Rocket">
+                                    </picture>
+                                    <span class="avatar-dot bg-success"></span>
+                                </div>
+                                <div class="d-flex justify-content-start flex-column align-items-start col">
+                                    <small class="text-muted fs-xs fw-bolder"><span class="fw-bold">Patrick
+                                            Johnson</span> &middot; 25 mins ago</small>
+                                    <div class="bg-light p-3 mt-2 rounded-t-s-4 rounded-t-e-4 rounded-b-e-4">
+                                        Cras sit amet gravida augue.
+                                    </div>
+                                </div>
+                            </div> <!-- / Messages-->
+                        </div>
+                    </div>
+                    <div class="border-top p-4 mx-n3">
+                        <div class="d-flex flex-column align-items-end">
+                            <input type="text" class="form-control d-flex w-100 bg-light border-0 text-muted mb-3"
+                                placeholder="Add new message...">
+                            <div class="d-flex justify-content-between w-100 align-items-center">
+                                <i class="ri-attachment-line text-muted ri-lg"></i>
+                                <button class="btn btn-sm btn-primary">Send</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- / Footer-->
+
+        </section>
+        <!-- / Content-->
+
+    </main>
+    <!-- /Page Content -->
+
+    <!-- Page Aside-->
+    <aside class="aside bg-white">
+
+        <div class="simplebar-wrapper">
+            <div data-pixr-simplebar>
+                <div class="pb-6">
+                    <!-- Mobile Logo-->
+                    <div class="d-flex d-xl-none justify-content-between align-items-center border-bottom aside-header">
+                        <a class="navbar-brand lh-1 border-0 m-0 d-flex align-items-center" href="./index.html">
+                            <div class="d-flex align-items-center">
+                                <svg class="f-w-5 me-2 text-primary d-flex align-self-center lh-1"
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 203.58 182">
+                                    <path
+                                        d="M101.66,41.34C94.54,58.53,88.89,72.13,84,83.78A21.2,21.2,0,0,1,69.76,96.41,94.86,94.86,0,0,0,26.61,122.3L81.12,0h41.6l55.07,123.15c-12-12.59-26.38-21.88-44.25-26.81a21.22,21.22,0,0,1-14.35-12.69c-4.71-11.35-10.3-24.86-17.53-42.31Z"
+                                        fill="currentColor" fill-rule="evenodd" fill-opacity="0.5" />
+                                    <path
+                                        d="M0,182H29.76a21.3,21.3,0,0,0,18.56-10.33,63.27,63.27,0,0,1,106.94,0A21.3,21.3,0,0,0,173.82,182h29.76c-22.66-50.84-49.5-80.34-101.79-80.34S22.66,131.16,0,182Z"
+                                        fill="currentColor" fill-rule="evenodd" />
+                                </svg>
+                                <span class="fw-black text-uppercase tracking-wide fs-6 lh-1">Apollo</span>
+                            </div>
+                        </a>
+                        <i
+                            class="ri-close-circle-line ri-lg close-menu text-muted transition-all text-primary-hover me-4 cursor-pointer"></i>
+                    </div>
+                    <!-- / Mobile Logo-->
+
+                    <ul class="list-unstyled mb-6">
+
+                        <!-- Dashboard Menu Section-->
+                        <li class="menu-item"><a class="d-flex align-items-center" href="./index.html">
+                                <span class="menu-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        class="w-100">
+                                        <rect fill-opacity=".5" fill="currentColor" x="3" y="3" width="7" height="7">
+                                        </rect>
+                                        <rect fill="currentColor" x="14" y="3" width="7" height="7"></rect>
+                                        <rect fill-opacity=".5" fill="currentColor" x="14" y="14" width="7" height="7">
+                                        </rect>
+                                        <rect fill="currentColor" x="3" y="14" width="7" height="7"></rect>
+                                    </svg>
+                                </span>
+                                <span class="menu-link">
+                                    Dashboard
+                                </span></a></li>
+                        <!-- / Dashboard Menu Section-->
+
+                        <!-- Dashboard Menu Section-->
+                        <li class="menu-section mt-4">Formulir</li>
+                        <li class="menu-item"><a class="d-flex align-items-center" href="#">
+                                <span class="menu-icon">
+                                    <i class="ri-close-circle-fill"></i>
+                                </span>
+                                <span class="menu-link">
+                                    Pembatalan
+                                </span>
+                            </a>
+                        </li>
+                        <li class="menu-item"><a class="d-flex align-items-center" href="#">
+                                <span class="menu-icon">
+                                    <i class="ri-swap-box-line"></i>
+                                </span>
+                                <span class="menu-link">
+                                    Pelimpahan </span>
+                            </a>
+                        </li>
+                        <li class="menu-item"><a class="d-flex align-items-center" href="#">
+                                <span class="menu-icon">
+                                    <i class="ri-feedback-line"></i>
+                                </span>
+                                <span class="menu-link">
+                                    Kritik dan </span>
+                            </a>
+                        </li>
+                        <!-- / Dashboard Menu Section-->
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </aside> <!-- / Page Aside-->
+
+    <!-- Theme JS -->
+    <!-- Vendor JS -->
+    <script src="./assets/js/vendor.bundle.js"></script>
+
+    <!-- Theme JS -->
+    <script src="./assets/js/theme.bundle.js"></script>
+</body>
+
+</html>

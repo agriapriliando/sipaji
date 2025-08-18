@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!-- Primary Meta Tags -->
+    <title>Surat Pelimpahan</title>
+    <meta name="title" content="Validasi PIN IAKNPKY" />
+    <meta name="description"
+        content="Layanan Penerbitan Surat Validasi PIN Calon Lulusan IAKN Palangka Raya. Dikelola Oleh UPT TIPD IAKN Palangka Raya" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Validasi PIN IAKNPKY" />
+    <meta property="og:description"
+        content="Layanan Penerbitan Surat Validasi PIN Calon Lulusan IAKN Palangka Raya. Dikelola Oleh UPT TIPD IAKN Palangka Raya" />
+    <meta property="og:image" content="https://iaknpky.ac.id/wp-content/uploads/2025/04/iakn_icon.png" />
+    <meta property="og:image:width" content="72" />
+    <meta property="og:image:height" content="72" />
+    <meta property="og:image:type" content="image/png" />
+
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Validasi PIN IAKNPKY" />
+    <meta property="twitter:description"
+        content="Layanan Penerbitan Surat Validasi PIN Calon Lulusan IAKN Palangka Raya. Dikelola Oleh UPT TIPD IAKN Palangka Raya" />
+
+    <!-- Normalize or reset CSS with your favorite library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+
+    <!-- Load paper.css for happy printing -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.4.1/paper.css">
+
+    <script src="https://kit.fontawesome.com/b2dad3da2e.js" crossorigin="anonymous"></script>
+
+    <!-- Set page size here: A5, A4 or A3
+        -->
+    <!-- Set also "landscape" if you need -->
+    <style>
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+
+        @page {
+            size: A4
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap');
+
+        * {
+            font-family: "Arimo", sans-serif;
+        }
+
+        .watermark-draft {
+            font-size: 50px;
+            display: block;
+            position: fixed;
+            z-index: 1;
+            background: white;
+            opacity: 0.1;
+            top: 10%;
+            left: 34%;
+            transform: translate(-50%, -50%);
+            transform: rotate(-40deg);
+        }
+
+        @media print {
+            .noprint {
+                visibility: hidden;
+            }
+        }
+
+        table.customTable {
+            width: 100%;
+            background-color: #FFFFFF;
+            border-collapse: collapse;
+            border-width: 0;
+            border-color: #0a0a0a;
+            border-style: solid;
+            color: #000000;
+        }
+
+        table.customTable td,
+        table.customTable th {
+            border-width: 0;
+            border-color: #0a0a0a;
+            border-style: solid;
+            padding: 3px 0;
+        }
+
+        table.customTable thead {
+            background-color: #b8b8b8;
+        }
+
+        .responsive {
+            width: 100%;
+            height: auto;
+        }
+
+        /* CSS */
+        .button-87 {
+            margin: 10px;
+            padding: 10px 20px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;
+            border-radius: 10px;
+            display: block;
+            border: 0px;
+            font-weight: 400;
+            box-shadow: 0px 0px 14px -7px #f019f0;
+            background-image: linear-gradient(45deg, #d92fff 0%, #5619f0 51%, #d92fff 100%);
+            /* cursor: pointer; */
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-87:hover {
+            background-position: right center;
+            /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .button-87:active {
+            transform: scale(0.35);
+        }
+
+        .absolute {
+            position: fixed;
+            top: 14px
+        }
+
+        .btnedit {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .btn-print {
+            background-color: #127c32;
+            /* Green */
+            border: none;
+            border-radius: 3px;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .d-none {
+            display: none;
+        }
+
+        .d-input {
+            width: 320px;
+        }
+    </style>
+</head>
+
+<!-- Set "A5", "A4" or "A3" for class name -->
+<!-- Set also "landscape" if you need -->
+
+<body class="A4">
+
+    <!-- Each sheet element should have the class "sheet" -->
+    <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
+    <section class="sheet padding-15mm" x-data="{
+            modecetak : true,
+            nama: 'KOMARIAH',
+            binbinti: 'ADUL',
+            today: new Date().toISOString().slice(0,10), // format awal: yyyy-mm-dd
+            get todayFormatted() {
+                return new Date(this.today).toLocaleDateString('id-ID', { 
+                    day: '2-digit', month: 'long', year: 'numeric' 
+                });
+            }
+        }">
+        <div id="buttoncetak" class="button-87 noprint absolute">
+            <button class="btn-print">
+                <span :class="modecetak ? '' : 'd-none'" style="margin-right: 10px;">
+                    <i class="fa-solid fa-print" onclick="window.print()"></i>
+                </span>
+                <span :class="modecetak ? '' : 'd-none'">
+                    <i class="fa-solid fa-pen-to-square" x-on:click="modecetak = !modecetak"></i>
+                </span>
+                <span style="margin-right: 15px;" :class="!modecetak ? '' : 'd-none'"></i>
+                    <i class="fa-solid fa-undo" x-on:click="modecetak = !modecetak"></i>
+                </span>
+                <span :class="!modecetak ? '' : 'd-none'" x-on:click="modecetak = !modecetak"></i>
+                    SIMPAN
+                </span>
+            </button>
+        </div>
+        <div>
+            <!-- <img class="responsive" src="#" alt="kop_surat"> -->
+        </div>
+        <table class="customTable" style="width: 550px;">
+            <div>
+                <!-- Preview hasil -->
+                <p style="text-align: right;" x-text="`Kasongan, ${todayFormatted}`"></p>
+
+                <!-- Lokasi bisa diedit -->
+                <div :class="!modecetak ? '' : 'd-none'" style="text-align: right;">
+                    <input type="date" class="form-control" x-model="today">
+                </div>
+
+            </div>
+            <tr>
+                <td width="10px;">Nomor</td>
+                <td width="10px">: </td>
+                <td width="350px;"> Lepas </td>
+            </tr>
+            <tr>
+                <td>Lampiran</td>
+                <td style="width: 5px;">: </td>
+                <td>1 (satu) Berkas </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">Perihal</td>
+                <td style="width: 5px; vertical-align: top;">:</td>
+                <td style="width: 200px;">Mohon Pelimpahan Nomor Porsi Jamaah Haji An. <span
+                        x-text="nama ? nama.toUpperCase() : '________'"></span> Nomor Porsi
+                    <span :class="modecetak ? '' : 'd-none'">1800280980 </span>
+                    <input :class="!modecetak ? '' : 'd-none'" type="text" value="1800280980 ">
+                </td>
+            </tr>
+        </table>
+        <table :class="modecetak ? '' : 'd-none'" class="customTable" style="margin-top: 18px;">
+            <tr>
+                <td style="width: 100px;"></td>
+                <td>Kepada :</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Yth. Kepala Kantor Kementerian Agama Kab. Katingan</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>di - Kasongan</td>
+            </tr>
+        </table>
+        <table :class="modecetak ? '' : 'd-none'" class="customTable" style="margin-top: 18px;">
+            <tr>
+                <td style="width: 100px;"></td>
+                <td>Assalamu'alaikum Wr. Wb. </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Dengan hormat,</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Yang bertanda tangan di bawah ini :</td>
+            </tr>
+        </table>
+        <table class="customTable" style="width: 700px;">
+            <tbody>
+                <tr>
+                    <td width="58px;"></td>
+                    <td width="25px;">Nama</td>
+                    <td width="10px;">: </td>
+                    <td width="260px;">
+                        <span :class="modecetak ? '' : 'd-none'">KOMARIAH </span>
+                        <input :class="!modecetak ? '' : 'd-none'" class="d-input" type="text" x-model="nama">
+                        <br :class="!modecetak ? '' : 'd-none'">
+                        <span class="noprint" style="font-style: italic;">(Nama Penerima Pelimpahan)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Bin/Binti</td>
+                    <td>: </td>
+                    <td>
+                        <span :class="modecetak ? '' : 'd-none'">ADUL </span>
+                        <input :class="!modecetak ? '' : 'd-none'" class="d-input" type="text" value="ADUL ">
+                        <br :class="!modecetak ? '' : 'd-none'">
+                        <span class="noprint" style="font-style: italic;">(Nama Ayah Penerima Pelimpahan)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Tempat Tgl Lahir</td>
+                    <td>: </td>
+                    <td>
+                        <span :class="modecetak ? '' : 'd-none'">Kandangan, 21 Juli 1959</span>
+                        <input :class="!modecetak ? '' : 'd-none'" class="d-input" type="text"
+                            value="Kandangan, 21 Juli 1959">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Pekerjaan</td>
+                    <td>: </td>
+                    <td>
+                        <span :class="modecetak ? '' : 'd-none'">Mengurus Rumah Tangga </span>
+                        <input :class="!modecetak ? '' : 'd-none'" class="d-input" type="text"
+                            value="Mengurus Rumah Tangga ">
+                    </td>
+                </tr>
+                <tr style="vertical-align: top;">
+                    <td></td>
+                    <td>Alamat</td>
+                    <td>: </td>
+                    <td>
+                        <span :class="modecetak ? '' : 'd-none'">
+                            Jalan Banama RT RW Desan Samba, Kec Katingan Tengah,
+                            Kab. Katingan, Prov Kalteng
+                        </span>
+                        <textarea :class="!modecetak ? '' : 'd-none'" style="height: 60px;" class="d-input"
+                            name="alamat" id="alamat">Jalan Banama RT RW Desan Samba, Kec Katingan Tengah, Kab. Katingan, Prov Kalteng 
+                        </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Nomor HP</td>
+                    <td>: </td>
+                    <td>
+                        <span :class="modecetak ? '' : 'd-none'">085249441182 </span>
+                        <input :class="!modecetak ? '' : 'd-none'" class="d-input" type="text" value="085249441182 ">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="customTable" style="margin-top: 18px;">
+            <tr>
+                <td width="100px;"></td>
+                <td>Dengan ini mengajukan permohonan sebagaimana perihal di atas dikarenakan
+                    <span :class="modecetak ? '' : 'd-none'">Ibu Saya Hamidah binti H. Hamzah meninggal dunia</span>
+                    <input :class="!modecetak ? '' : 'd-none d-input'" class="d-input" type="text"
+                        value="Ibu Saya Hamidah binti H. Hamzah meninggal dunia">.
+                    Bersama ini kami lampirkan berkas persyaratan sebagai berikut.
+                </td>
+            </tr>
+            <style>
+                [x-cloak] {
+                    display: none !important;
+                }
+            </style>
+
+            <tr x-data="{ persyaratan: '' }">
+                <td></td>
+                <td>
+                    <select :class="!modecetak ? '' : 'd-none'" name="persyaratan" x-model="persyaratan">
+                        <option value="">Jenis Persyaratan</option>
+                        <option value="Meninggal Dunia">Meninggal Dunia</option>
+                        <option value="Sakit Permanen">Sakit Permanen</option>
+                    </select>
+
+                    <!-- Hanya tampil jika sudah memilih -->
+                    <ol x-show="persyaratan" x-cloak>
+                        <li x-show="persyaratan === 'Meninggal Dunia'">Surat Akta Kematian dari Disdukcapil</li>
+                        <li x-show="persyaratan === 'Sakit Permanen'">Surat Keterangan dari Dokter</li>
+
+                        <li>Asli Bukti Setoran Awal dan/atau Lunas Bipih</li>
+                        <li>Asli SPPH/Nomor Porsi</li>
+                        <li>Asli Surat Kuasa Penunjukan Pelimpahan</li>
+                        <li>Asli Surat Keterangan Tanggung Jawab Mutlak</li>
+                        <li>KTP (Penerima Pelimpahan)</li>
+                        <li>Kartu Keluarga (Penerima Pelimpahan)</li>
+                        <li>Akte Kelahiran/Surat Kenal Lahir (Penerima Pelimpahan)</li>
+                        <li>Akta Nikah/Buku Nikah (Penerima Pelimpahan)</li>
+                        <li>Foto 3 X 4 = 5 Lembar (standar haji dengan latar putih)</li>
+                        <li>Buku Tabungan Haji bagi (Penerima Pelimpahan)</li>
+                    </ol>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Demikian untuk dapat diproses lebih lanjut dan terima kasih atas kerja samanya.</td>
+            </tr>
+        </table>
+        <table class="customTable" style="width:100%; margin-top: 12px;">
+            <tbody>
+                <tr>
+                    <td style="width: 60%;"></td>
+                    <td>Pemohon</td>
+                </tr>
+                <tr height="100px">
+                    <td></td>
+                    <td>
+                        <span style="border: 1px solid black;">Materai Rp 10.000</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>KOMARIAH</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.14.9/cdn.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</body>
+
+</html>
