@@ -37,6 +37,10 @@
         -->
     <!-- Set also "landscape" if you need -->
     <style>
+        [x-cloak] {
+            display: none !important;
+        }
+
         @media print {
             .no-print {
                 display: none !important;
@@ -177,8 +181,8 @@
             binbinti: 'ADUL',
             today: new Date().toISOString().slice(0,10), // format awal: yyyy-mm-dd
             get todayFormatted() {
-                return new Date(this.today).toLocaleDateString('id-ID', { 
-                    day: '2-digit', month: 'long', year: 'numeric' 
+                return new Date(this.today).toLocaleDateString('id-ID', {
+                    day: '2-digit', month: 'long', year: 'numeric'
                 });
             }
         }">
@@ -314,7 +318,7 @@
                             Kab. Katingan, Prov Kalteng
                         </span>
                         <textarea :class="!modecetak ? '' : 'd-none'" style="height: 60px;" class="d-input"
-                            name="alamat" id="alamat">Jalan Banama RT RW Desan Samba, Kec Katingan Tengah, Kab. Katingan, Prov Kalteng 
+                            name="alamat" id="alamat">Jalan Banama RT RW Desan Samba, Kec Katingan Tengah, Kab. Katingan, Prov Kalteng
                         </textarea>
                     </td>
                 </tr>
@@ -339,12 +343,6 @@
                     Bersama ini kami lampirkan berkas persyaratan sebagai berikut.
                 </td>
             </tr>
-            <style>
-                [x-cloak] {
-                    display: none !important;
-                }
-            </style>
-
             <tr x-data="{ persyaratan: '' }">
                 <td></td>
                 <td>

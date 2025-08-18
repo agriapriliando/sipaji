@@ -32,4 +32,16 @@ class Cancel extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // Scope filter by search (nama/nim)
+    public function scopeSearch($query, $term)
+    {
+        if ($term) {
+            return $query->where(function ($q) use ($term) {
+                $q->where('nama', 'like', "%{$term}%")
+                    ->orWhere('nomor_porsi', 'like', "%{$term}%");
+            });
+        }
+        return $query;
+    }
 }
