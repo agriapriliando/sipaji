@@ -32,7 +32,6 @@ return new class extends Migration
 
             $table->string('alasan_pelimpahan', 255)->nullable();
 
-            $table->boolean('status_cetak')->default(false);
             $table->boolean('status_surveys')->default(false);
 
             $table->string('jenis_persyaratan', 100)->nullable();

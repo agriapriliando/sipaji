@@ -21,7 +21,6 @@ class Delegation extends Model
         'alamat',
         'nomor_hp',
         'alasan_pelimpahan',
-        'status_cetak',
         'status_surveys',
         'jenis_persyaratan',
     ];
@@ -35,5 +34,16 @@ class Delegation extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function scopeSearch($query, $term)
+    {
+        if ($term) {
+            return $query->where(function ($q) use ($term) {
+                $q->where('nama_penerima', 'like', "%{$term}%")
+                    ->orWhere('nomor_porsi', 'like', "%{$term}%");
+            });
+        }
+        return $query;
     }
 }

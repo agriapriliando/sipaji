@@ -29,7 +29,6 @@ return new class extends Migration
 
             $table->text('alasan_pembatalan')->nullable();
 
-            $table->boolean('status_cetak')->default(false);
             $table->boolean('status_surveys')->default(false);
 
             $table->timestamps();

@@ -26,7 +26,7 @@
             <nav class="mb-0" aria-label="breadcrumb">
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Daftar Pembatalan</li>
+                    <li class="breadcrumb-item active" aria-current="page">Daftar Pelimpahan</li>
                 </ol>
             </nav>
             <div class="d-flex justify-content-end align-items-center mt-3 mt-md-0">
@@ -42,7 +42,7 @@
     <section class="container-fluid">
         <!-- Middle Row Widgets-->
         <div class="row mb-4 mt-0">
-            <!-- Tabel Pembatalan-->
+            <!-- Tabel Pelimpahan-->
             <div class="col-12 mb-3">
                 {{-- toast --}}
                 <div class="toast-container position-fixed top-0 start-50 translate-middle-x">
@@ -56,7 +56,7 @@
                 {{-- toast --}}
                 <div class="card mb-4 h-100">
                     <div class="card-header justify-content-between align-items-center d-md-flex">
-                        <h6 class="card-title mb-2">Daftar Surat Pembatalan</h6>
+                        <h6 class="card-title mb-2">Daftar Surat Pelimpahan</h6>
                         <div class="d-flex">
                             <!-- Search Bar-->
                             <select wire:model.live="perPage" class="form-select" id="" style="width: 90px;">
@@ -85,7 +85,7 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Nomor Porsi</th>
-                                            <th scope="col">Nama</th>
+                                            <th scope="col">Nama Penerima</th>
                                             <th scope="col">Tanggal</th>
                                             <th scope="col"></th>
                                         </tr>
@@ -100,16 +100,16 @@
                                                     {{ $item->nomor_porsi }}
                                                 </td>
                                                 <td>
-                                                    {{ $item->nama }}
+                                                    {{ $item->nama_penerima }}
                                                 </td>
                                                 <td>
                                                     {{ $item->created_at->translatedFormat('d F Y h:i') }} WIB
                                                 </td>
                                                 <td>
-                                                    <a target="_blank" href="{{ route('cetak', ['pembatalan', $item->id]) }}" class="btn btn-success btn-sm">
+                                                    <a target="_blank" href="{{ route('cetak', ['pelimpahan', $item->id]) }}" class="btn btn-success btn-sm">
                                                         <i class="ri-printer-fill"></i>
                                                     </a>
-                                                    <a wire:navigate href="{{ route('edit', ['pembatalan', $item->id]) }}" class="btn btn-warning btn-sm">
+                                                    <a wire:navigate href="{{ route('edit', ['pelimpahan', $item->id]) }}" class="btn btn-warning btn-sm">
                                                         <i class="ri-pencil-line"></i>
                                                     </a>
                                                     <button class="btn btn-danger btn-sm" @click="open = true" title="Hapus Data">
@@ -141,13 +141,13 @@
                     </div>
                 </div>
             </div>
-            <!-- Tabel Pembatalan-->
+            <!-- Tabel Pelimpahan-->
 
         </div>
         <!-- / Middle Row Widgets-->
 
         <!-- Footer -->
-        <footer class="footer">
+        <footer class="  footer">
             <p class="small text-muted m-0">All rights reserved | © 2021</p>
             <p class="small text-muted m-0">Template created by <a href="https://www.pixelrocket.store/">PixelRocket</a></p>
         </footer>
@@ -158,8 +158,8 @@
         <!-- / Sidebar Menu Overlay-->
 
     </section>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- / Content-->
+
 </main>
 <!-- /Page Content -->
 @script

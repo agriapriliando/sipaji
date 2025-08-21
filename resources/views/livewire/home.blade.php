@@ -19,238 +19,290 @@
     </div> <!-- / Breadcrumbs-->
 
     <!-- Content-->
-    <section class="container-fluid" x-data="{ showForm: 'Pembatalan' }">
+    <section class="container-fluid">
         <div class="card">
             <div class="card-body" style="max-width: 500px">
-                <select class="form-select" x-model="showForm" @change="showForm = $event.target.value">
-                    <option>Pilih Jenis Surat</option>
-                    <option value="Pembatalan">Surat Pembatalan</option>
-                    <option value="Pelimpahan">Surat Pelimpahan</option>
+                <select class="form-select" wire:model.live="jenissurat">
+                    {{-- <option>Pilih Jenis Surat</option> --}}
+                    <option value="pelimpahan">Surat Pelimpahan</option>
+                    {{-- <option value="pembatalan">Surat Pembatalan</option> --}}
                 </select>
             </div>
         </div>
 
-        <!-- Formulir Pembatalan -->
-        <div x-show="showForm === 'Pembatalan'" class="card mb-4" x-cloak>
-            <div class="card-header justify-content-between align-items-center d-flex">
-                <h3 class="card-title m-0">Formulir Surat Pembatalan</h3>
-            </div>
-            <div class="card-body">
-                <form wire:submit.prevent="submitPembatalan">
-                    <!-- Nomor Porsi Haji -->
-                    <div class="mb-3 row">
-                        <label for="nomor_porsi" class="col-sm-3 col-form-label">Nomor Porsi Haji</label>
-                        <div class="col-sm-9">
-                            <input type="text" wire:model.live.debounce.300ms="nomor_porsi" class="form-control @error('nomor_porsi') is-invalid @enderror" id="nomor_porsi"
-                                placeholder="Masukkan Nomor Porsi Haji">
-                            @error('nomor_porsi')
-                                <small class="text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <!-- Nama -->
-                    <div class="mb-3 row">
-                        <label for="nama" class="col-sm-3 col-form-label">Nama</label>
-                        <div class="col-sm-9">
-                            <input type="text" wire:model.live.debounce.300ms="nama" class="form-control" id="nama" placeholder="Masukkan Nama Lengkap">
-                            @error('nama')
-                                <small class="text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <!-- Bin/Binti -->
-                    <div class="mb-3 row">
-                        <label for="bin_binti" class="col-sm-3 col-form-label">Bin / Binti</label>
-                        <div class="col-sm-9">
-                            <input type="text" wire:model.live.debounce.300ms="bin_binti" class="form-control" id="binBinti" placeholder="Masukkan Bin/Binti">
-                        </div>
-                    </div>
-
-                    <!-- Tempat, Tanggal Lahir -->
-                    <div class="mb-3 row">
-                        <label class="col-sm-3 col-form-label">Tempat, Tanggal Lahir</label>
-                        <div class="col-sm-9 row">
-                            <div class="col-md-6">
-                                <input type="text" wire:model.live.debounce.300ms="ttl_tempat" class="form-control" id="ttl_tempat" placeholder="Masukkan Tempat Lahir">
-                                @error('ttl_tempat')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                            <div class="col-md-6">
-                                <input type="date" wire:model.live.debounce.300ms="ttl_tanggal" class="form-control" id="ttl_tanggal">
-                                @error('ttl_tanggal')
+        @if ($jenissurat == 'pembatalan')
+            <!-- Formulir Pembatalan -->
+            <div class="card mb-4">
+                <div class="card-header justify-content-between align-items-center d-flex">
+                    <h3 class="card-title m-0">Formulir Surat Pembatalan</h3>
+                </div>
+                <div class="card-body">
+                    <form wire:submit.prevent="submitPembatalan">
+                        <!-- Nomor Porsi Haji -->
+                        <div class="mb-3 row">
+                            <label for="nomor_porsi" class="col-sm-3 col-form-label">Nomor Porsi Haji</label>
+                            <div class="col-sm-9">
+                                <input type="text" wire:model.live.debounce.300ms="nomor_porsi" class="form-control @error('nomor_porsi') is-invalid @enderror" id="nomor_porsi"
+                                    placeholder="Masukkan Nomor Porsi Haji">
+                                @error('nomor_porsi')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Pekerjaan -->
-                    <div class="mb-3 row">
-                        <label for="pekerjaan" class="col-sm-3 col-form-label">Pekerjaan</label>
-                        <div class="col-sm-9">
-                            <input type="text" wire:model.live.debounce.300ms="pekerjaan" class="form-control" id="pekerjaan" placeholder="Masukkan Pekerjaan">
-                            @error('pekerjaan')
-                                <small class="text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <!-- Alamat -->
-                    <div class="mb-3 row">
-                        <label for="alamat" class="col-sm-3 col-form-label">Alamat</label>
-                        <div class="col-sm-9">
-                            <textarea wire:model.live.debounce.300ms="alamat" class="form-control" id="alamat" rows="3" placeholder="Masukkan Alamat Lengkap"></textarea>
-                            @error('alamat')
-                                <small class="text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <!-- Alasan Pembatalan -->
-                    <div class="mb-3 row">
-                        <label for="alasan_pembatalan" class="col-sm-3 col-form-label">Alasan Pembatalan</label>
-                        <div class="col-sm-9">
-                            <textarea wire:model.live.debounce.300ms="alasan_pembatalan" class="form-control" id="alasan_pembatalan" rows="3" placeholder="Masukkan Alasan Pembatalan"></textarea>
-                            @error('alasan_pembatalan')
-                                <small class="text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <!-- Tombol Submit -->
-                    <div class="row">
-                        <div class="offset-sm-3 col-sm-9">
-                            <button type="submit" class="btn btn-primary" wire:loading.attr="disabled">Cetak Surat Pembatalan</button>
-                            <div wire:loading wire:target="submitPembatalan" class="spinner-border spinner-border-sm ms-2" role="status">
-                                <span class="visually-hidden"></span>
+                        <!-- Nama -->
+                        <div class="mb-3 row">
+                            <label for="nama" class="col-sm-3 col-form-label">Nama</label>
+                            <div class="col-sm-9">
+                                <input type="text" wire:model.live.debounce.300ms="nama" class="form-control" id="nama" placeholder="Masukkan Nama Lengkap">
+                                @error('nama')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
-                            <span wire:loading wire:target="submitPembatalan">Silahkan Tunggu...</span>
                         </div>
-                    </div>
-                </form>
 
-                @if (session()->has('success'))
-                    <div class="alert alert-success mt-3">
-                        {{ session('success') }}
-                    </div>
-                @endif
-            </div>
-        </div>
-        <!-- /Formulir Pembatalan -->
-
-        <!-- Formulir Pelimpahan -->
-        <div x-show="showForm === 'Pelimpahan'" class="card mb-4">
-            <div class="card-header justify-content-between align-items-center d-flex">
-                <h3 class="card-title m-0">Formulir Pelimpahan</h3>
-            </div>
-            <div class="card-body">
-                <form>
-                    <!-- Nomor Porsi Haji -->
-                    <div class="mb-3 row">
-                        <label for="nomorPorsi" class="col-sm-3 col-form-label">Nomor Porsi Haji</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nomorPorsi" placeholder="Masukkan Nomor Porsi Haji">
+                        <!-- Bin/Binti -->
+                        <div class="mb-3 row">
+                            <label for="bin_binti" class="col-sm-3 col-form-label">Bin / Binti</label>
+                            <div class="col-sm-9">
+                                <input type="text" wire:model="bin_binti" class="form-control" id="binBinti" placeholder="Masukkan Bin/Binti">
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Nama -->
-                    <div class="mb-3 row">
-                        <label for="nama" class="col-sm-3 col-form-label">Nama</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama Lengkap">
-                        </div>
-                    </div>
-
-                    <!-- Bin/Binti -->
-                    <div class="mb-3 row">
-                        <label for="bin_binti" class="col-sm-3 col-form-label">Bin / Binti</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="bin_binti" placeholder="Masukkan Bin/Binti">
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <!-- Nama Penerima Pelimpahan -->
-                    <div class="mb-3 row">
-                        <label for="namaPenerima" class="col-sm-3 col-form-label">Nama Penerima</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="namaPenerima" placeholder="Masukkan Nama Penerima">
-                        </div>
-                    </div>
-
-                    <!-- Bin/Binti Penerima -->
-                    <div class="mb-3 row">
-                        <label for="binBintiPenerima" class="col-sm-3 col-form-label">Bin/Binti Penerima</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="binBintiPenerima" placeholder="Masukkan Bin/Binti Penerima">
-                        </div>
-                    </div>
-
-                    <!-- Tempat, Tanggal Lahir -->
-                    <div class="mb-3 row">
-                        <label class="col-sm-3 col-form-label">Tempat, Tanggal Lahir</label>
-                        <div class="col-sm-9">
-                            <div class="row g-2">
+                        <!-- Tempat, Tanggal Lahir -->
+                        <div class="mb-3 row">
+                            <label class="col-sm-3 col-form-label">Tempat, Tanggal Lahir</label>
+                            <div class="col-sm-9 row">
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" id="tempatLahir" placeholder="Masukkan Tempat Lahir">
+                                    <input type="text" wire:model="ttl_tempat" class="form-control" id="ttl_tempat" placeholder="Masukkan Tempat Lahir">
+                                    @error('ttl_tempat')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="date" class="form-control" id="tanggalLahir">
+                                    <input type="date" wire:model="ttl_tanggal" class="form-control" id="ttl_tanggal">
+                                    @error('ttl_tanggal')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Pekerjaan -->
-                    <div class="mb-3 row">
-                        <label for="pekerjaan" class="col-sm-3 col-form-label">Pekerjaan</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="pekerjaan" placeholder="Masukkan Pekerjaan">
+                        <!-- Pekerjaan -->
+                        <div class="mb-3 row">
+                            <label for="pekerjaan" class="col-sm-3 col-form-label">Pekerjaan</label>
+                            <div class="col-sm-9">
+                                <input type="text" wire:model="pekerjaan" class="form-control" id="pekerjaan" placeholder="Masukkan Pekerjaan">
+                                @error('pekerjaan')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Alamat -->
-                    <div class="mb-3 row">
-                        <label for="alamat" class="col-sm-3 col-form-label">Alamat</label>
-                        <div class="col-sm-9">
-                            <textarea class="form-control" id="alamat" rows="3" placeholder="Masukkan Alamat Lengkap"></textarea>
+                        <!-- Alamat -->
+                        <div class="mb-3 row">
+                            <label for="alamat" class="col-sm-3 col-form-label">Alamat</label>
+                            <div class="col-sm-9">
+                                <textarea wire:model="alamat" class="form-control" id="alamat" rows="3" placeholder="Masukkan Alamat Lengkap"></textarea>
+                                @error('alamat')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Nomor HP -->
-                    <div class="mb-3 row">
-                        <label for="nomorHp" class="col-sm-3 col-form-label">Nomor HP</label>
-                        <div class="col-sm-9">
-                            <input type="tel" class="form-control" id="nomorHp" placeholder="Masukkan Nomor HP">
+                        <!-- Alasan Pembatalan -->
+                        <div class="mb-3 row">
+                            <label for="alasan_pembatalan" class="col-sm-3 col-form-label">Alasan Pembatalan</label>
+                            <div class="col-sm-9">
+                                <textarea wire:model="alasan_pembatalan" class="form-control" id="alasan_pembatalan" rows="3" placeholder="Masukkan Alasan Pembatalan"></textarea>
+                                @error('alasan_pembatalan')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Alasan Pelimpahan -->
-                    <div class="mb-3 row">
-                        <label for="alasan" class="col-sm-3 col-form-label">Alasan Pelimpahan</label>
-                        <div class="col-sm-9">
-                            <select class="form-select" id="alasan">
-                                <option value="">Pilih Alasan</option>
-                                <option value="meninggal">Meninggal Dunia</option>
-                                <option value="sakit">Sakit Permanen</option>
-                            </select>
+                        <!-- Tombol Submit -->
+                        <div class="row">
+                            <div class="offset-sm-3 col-sm-9">
+                                <button type="submit" class="btn btn-primary" wire:loading.attr="disabled">Cetak Surat Pembatalan</button>
+                                <div wire:loading wire:target="submitPembatalan" class="spinner-border spinner-border-sm ms-2" role="status">
+                                    <span class="visually-hidden"></span>
+                                </div>
+                                <span wire:loading wire:target="submitPembatalan">Silahkan Tunggu...</span>
+                            </div>
                         </div>
-                    </div>
+                    </form>
 
-                    <!-- Tombol Submit -->
-                    <div class="row">
-                        <div class="offset-sm-3 col-sm-9">
-                            <button type="submit" class="btn btn-primary">Cetak Surat Pelimpahan</button>
+                    @if (session()->has('success'))
+                        <div class="alert alert-success mt-3">
+                            {{ session('success') }}
                         </div>
-                    </div>
-                </form>
+                    @endif
+                </div>
             </div>
-        </div>
-        <!-- /Formulir Pelimpahan -->
+            <!-- /Formulir Pembatalan -->
+        @endif
+
+        @if ($jenissurat == 'pelimpahan')
+            <!-- Formulir Pelimpahan -->
+            <div class="card mb-4">
+                <div class="card-header justify-content-between align-items-center d-flex">
+                    <h3 class="card-title m-0">Formulir Pelimpahan</h3>
+                </div>
+                <div class="card-body">
+                    <form wire:submit.prevent="submitPelimpahan">
+                        <!-- Nomor Porsi Haji -->
+                        <div class="mb-3 row">
+                            <label for="nomor_porsi" class="col-sm-3 col-form-label">Nomor Porsi Haji</label>
+                            <div class="col-sm-9">
+                                <input type="text" wire:model="nomor_porsi" class="form-control" id="nomor_porsi" placeholder="Masukkan Nomor Porsi Haji">
+                                @error('nomor_porsi')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Nama Asal -->
+                        <div class="mb-3 row">
+                            <label for="namaAsal" class="col-sm-3 col-form-label">Nama</label>
+                            <div class="col-sm-9">
+                                <input type="text" wire:model="nama_asal" class="form-control" id="namaAsal" placeholder="Masukkan Nama Lengkap">
+                                @error('nama_asal')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Bin/Binti Asal -->
+                        <div class="mb-3 row">
+                            <label for="bin_binti_asal" class="col-sm-3 col-form-label">Bin / Binti</label>
+                            <div class="col-sm-9">
+                                <input type="text" wire:model="bin_binti_asal" class="form-control" id="bin_binti_asal" placeholder="Masukkan Bin/Binti">
+                                @error('bin_binti_asal')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <!-- Nama Penerima Pelimpahan -->
+                        <div class="mb-3 row">
+                            <label for="namaPenerima" class="col-sm-3 col-form-label">Nama Penerima</label>
+                            <div class="col-sm-9">
+                                <input type="text" wire:model="nama_penerima" class="form-control" id="namaPenerima" placeholder="Masukkan Nama Penerima">
+                                @error('nama_penerima')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Bin/Binti Penerima -->
+                        <div class="mb-3 row">
+                            <label for="binBintiPenerima" class="col-sm-3 col-form-label">Bin/Binti Penerima</label>
+                            <div class="col-sm-9">
+                                <input type="text" wire:model="bin_binti_penerima" class="form-control" id="binBintiPenerima" placeholder="Masukkan Bin/Binti Penerima">
+                                @error('bin_binti_penerima')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Tempat, Tanggal Lahir -->
+                        <div class="mb-3 row">
+                            <label class="col-sm-3 col-form-label">Tempat, Tanggal Lahir</label>
+                            <div class="col-sm-9">
+                                <div class="row g-2">
+                                    <div class="col-md-6">
+                                        <input type="text" wire:model="ttl_tempat" class="form-control" id="tempatLahir" placeholder="Masukkan Tempat Lahir">
+                                        @error('ttl_tempat')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="date" wire:model="ttl_tanggal" class="form-control" id="tanggalLahir">
+                                        @error('ttl_tanggal')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pekerjaan -->
+                        <div class="mb-3 row">
+                            <label for="pekerjaan" class="col-sm-3 col-form-label">Pekerjaan</label>
+                            <div class="col-sm-9">
+                                <input type="text" wire:model="pekerjaan" class="form-control" id="pekerjaan" placeholder="Masukkan Pekerjaan">
+                                @error('pekerjaan')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Alamat -->
+                        <div class="mb-3 row">
+                            <label for="alamat" class="col-sm-3 col-form-label">Alamat</label>
+                            <div class="col-sm-9">
+                                <textarea wire:model="alamat" class="form-control" id="alamat" rows="3" placeholder="Masukkan Alamat Lengkap"></textarea>
+                                @error('alamat')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Nomor HP -->
+                        <div class="mb-3 row">
+                            <label for="nomorHp" class="col-sm-3 col-form-label">Nomor HP</label>
+                            <div class="col-sm-9">
+                                <input type="tel" wire:model="nomor_hp" class="form-control" id="nomorHp" placeholder="Masukkan Nomor HP">
+                                @error('nomor_hp')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Alasan Pelimpahan -->
+                        <div class="mb-3 row">
+                            <label for="alasan_pelimpahan" class="col-sm-3 col-form-label">Alasan Pelimpahan</label>
+                            <div class="col-sm-9">
+                                <input type="text" wire:model="alasan_pelimpahan" class="form-control" id="alasan_pelimpahan" placeholder="Cantumkan Alasan Pelimpahan secara detail">
+                                @error('alasan_pelimpahan')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Jenis Persyaratan -->
+                        <div class="mb-3 row">
+                            <label for="alasan" class="col-sm-3 col-form-label">Jenis Persyaratan</label>
+                            <div class="col-sm-9">
+                                <select wire:model="jenis_persyaratan" class="form-select" id="alasan">
+                                    <option value="">Pilih Alasan</option>
+                                    <option value="Meninggal Dunia">Meninggal Dunia</option>
+                                    <option value="Sakit Permanen">Sakit Permanen</option>
+                                </select>
+                                @error('jenis_persyaratan')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Tombol Submit -->
+                        <div class="row">
+                            <div class="offset-sm-3 col-sm-9">
+                                <button type="submit" class="btn btn-primary" wire:loading.attr="disabled">Cetak Surat Pelimpahan</button>
+                                <div wire:loading wire:target="submitPelimpahan" class="spinner-border spinner-border-sm ms-2" role="status">
+                                    <span class="visually-hidden"></span>
+                                </div>
+                                <span wire:loading wire:target="submitPelimpahan">Silahkan Tunggu...</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /Formulir Pelimpahan -->
+        @endif
 
         <!-- Page Title-->
         <div class="d-none">

@@ -36,9 +36,8 @@ class DelegationSeeder extends Seeder
         //     'alamat'             => 'Jl. Melati No. 10, Katingan',
         //     'nomor_hp'           => '081234567890',
         //     'alasan_pelimpahan'  => 'Orang tua sakit dan tidak dapat berangkat',
-        //     'status_cetak'       => false,
         //     'status_surveys'     => false,
-        //     'jenis_persyaratan'  => 'Wafat/Jompo/Sakit Permanen',
+        //     'jenis_persyaratan'  => 'Sakit Permanen',
         // ]);
 
         // Dummy lainnya
@@ -57,10 +56,9 @@ class DelegationSeeder extends Seeder
                 'alamat'             => $faker->address(),
                 'nomor_hp'           => '08' . $faker->numerify('##########'),
                 'alasan_pelimpahan'  => $faker->boolean(80) ? $faker->sentence(6) : null,
-                'status_cetak'       => $faker->boolean(),
                 'status_surveys'     => $faker->boolean(),
                 'jenis_persyaratan'  => $faker->randomElement([
-                    'Sakit Keras',
+                    'Sakit Permanen',
                     'Meninggal Dunia',
                 ]),
             ]);

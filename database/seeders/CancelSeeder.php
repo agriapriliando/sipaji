@@ -33,7 +33,6 @@ class CancelSeeder extends Seeder
         //     'pekerjaan'         => 'Ibu Rumah Tangga',
         //     'alamat'            => 'Jl. Kenanga No. 5, Katingan',
         //     'alasan_pembatalan' => 'Kondisi kesehatan tidak memungkinkan',
-        //     'status_cetak'      => false,
         //     'status_surveys'    => false,
         // ]);
 
@@ -50,7 +49,6 @@ class CancelSeeder extends Seeder
                 'pekerjaan'         => $faker->boolean(80) ? $faker->jobTitle() : null,
                 'alamat'            => $faker->address(),
                 'alasan_pembatalan' => $faker->boolean(85) ? $faker->sentence(8) : null,
-                'status_cetak'      => $faker->boolean(),
                 'status_surveys'    => $faker->boolean(),
             ]);
         }

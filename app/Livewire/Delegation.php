@@ -2,11 +2,11 @@
 
 namespace App\Livewire;
 
-use App\Models\Cancel as ModelsCancel;
+use App\Models\Delegation as ModelsDelegation;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class Cancel extends Component
+class Delegation extends Component
 {
     use WithPagination;
 
@@ -17,15 +17,15 @@ class Cancel extends Component
 
     public function delete($id)
     {
-        $cancel = ModelsCancel::findOrFail($id);
-        $cancel->delete();
+        $delegations = ModelsDelegation::findOrFail($id);
+        $delegations->delete();
 
-        $this->dispatch('deleted-success', message: 'Data Pembatalan berhasil dihapus!');
+        $this->dispatch('deleted-success', message: 'Data Pelimpahan berhasil dihapus!');
     }
     public function render()
     {
-        return view('livewire.cancel', [
-            'data' => ModelsCancel::search($this->search)
+        return view('livewire.delegation', [
+            'data' => ModelsDelegation::search($this->search)
                 ->latest()
                 ->paginate($this->perPage),
         ]);

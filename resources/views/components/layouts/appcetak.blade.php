@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <!-- Primary Meta Tags -->
-    <title>Surat Pembatalan</title>
+    <title>{{ $title ?? 'Surat' }}</title>
     <meta name="title" content="Validasi PIN IAKNPKY" />
     <meta name="description" content="Layanan Penerbitan Surat Validasi PIN Calon Lulusan IAKN Palangka Raya. Dikelola Oleh UPT TIPD IAKN Palangka Raya" />
 
@@ -176,6 +176,7 @@
         }
     </style>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @stack('styles')
 </head>
 
 <!-- Set "A5", "A4" or "A3" for class name -->
