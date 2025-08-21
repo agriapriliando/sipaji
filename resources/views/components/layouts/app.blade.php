@@ -72,8 +72,8 @@
 
 <body>
     <x-navbar></x-navbar>
-
-    {{ $slot }}
+    {{ $slot ?? '' }}
+    @yield('content')
 
     <x-sidebar></x-sidebar>
     <!-- Theme JS -->

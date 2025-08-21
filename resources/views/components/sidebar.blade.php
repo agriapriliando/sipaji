@@ -15,7 +15,7 @@
                                 <path d="M0,182H29.76a21.3,21.3,0,0,0,18.56-10.33,63.27,63.27,0,0,1,106.94,0A21.3,21.3,0,0,0,173.82,182h29.76c-22.66-50.84-49.5-80.34-101.79-80.34S22.66,131.16,0,182Z"
                                     fill="currentColor" fill-rule="evenodd" />
                             </svg>
-                            <span class="fw-black text-uppercase tracking-wide fs-6 lh-1">Apollo</span>
+                            <span class="fw-black text-uppercase tracking-wide fs-6 lh-1">PANDAIHAJI</span>
                         </div>
                     </a>
                     <i class="ri-close-circle-line ri-lg close-menu text-muted transition-all text-primary-hover me-4 cursor-pointer"></i>
@@ -25,21 +25,34 @@
                 <ul class="list-unstyled mb-6">
 
                     <!-- Dashboard Menu Section-->
-                    <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('home') }}" wire:navigate>
-                            <span class="menu-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="w-100">
-                                    <rect fill-opacity=".5" fill="currentColor" x="3" y="3" width="7" height="7">
-                                    </rect>
-                                    <rect fill="currentColor" x="14" y="3" width="7" height="7"></rect>
-                                    <rect fill-opacity=".5" fill="currentColor" x="14" y="14" width="7" height="7">
-                                    </rect>
-                                    <rect fill="currentColor" x="3" y="14" width="7" height="7"></rect>
-                                </svg>
-                            </span>
-                            <span class="menu-link">
-                                Dashboard
-                            </span></a>
-                    </li>
+                    @if (Auth::user())
+                        <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('home') }}" wire:navigate>
+                                <span class="menu-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="w-100">
+                                        <rect fill-opacity=".5" fill="currentColor" x="3" y="3" width="7" height="7">
+                                        </rect>
+                                        <rect fill="currentColor" x="14" y="3" width="7" height="7"></rect>
+                                        <rect fill-opacity=".5" fill="currentColor" x="14" y="14" width="7" height="7">
+                                        </rect>
+                                        <rect fill="currentColor" x="3" y="14" width="7" height="7"></rect>
+                                    </svg>
+                                </span>
+                                <span class="menu-link">
+                                    Dashboard
+                                </span></a>
+                        </li>
+                    @endif
+                    @if (!Auth::user())
+                        <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('login') }}" wire:navigate>
+                                <span class="menu-icon">
+                                    <i class="ri-login-box-line"></i>
+                                </span>
+                                <span class="menu-link">
+                                    L O G I N</span>
+                            </a>
+                        </li>
+                    @endif
+
                     <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('grafik') }}">
                             <span class="menu-icon">
                                 <i class="ri-dashboard-line"></i>
@@ -48,28 +61,7 @@
                                 Grafik
                             </span></a>
                     </li>
-                    <!-- / Dashboard Menu Section-->
-
-                    <!-- Dashboard Menu Section-->
-                    <li class="menu-section mt-4">Formulir</li>
-                    <li class="menu-item"><a class="d-flex align-items-center" href="{{ url('pembatalan') }}" wire:navigate>
-                            <span class="menu-icon">
-                                <i class="ri-close-circle-fill"></i>
-                            </span>
-                            <span class="menu-link">
-                                Pembatalan
-                            </span>
-                        </a>
-                    </li>
-                    <li class="menu-item"><a class="d-flex align-items-center" href="{{ url('pelimpahan') }}" wire:navigate>
-                            <span class="menu-icon">
-                                <i class="ri-swap-box-line"></i>
-                            </span>
-                            <span class="menu-link">
-                                Pelimpahan </span>
-                        </a>
-                    </li>
-                    <li class="menu-item"><a class="d-flex align-items-center" href="#">
+                    <li class="menu-item bg-warning"><a class="d-flex align-items-center" href="{{ route('addkritiksaran') }}" wire:navigate>
                             <span class="menu-icon">
                                 <i class="ri-feedback-line"></i>
                             </span>
@@ -77,15 +69,45 @@
                                 Kritik dan Saran</span>
                         </a>
                     </li>
-                    <li class="menu-item d-none"><a class="d-flex align-items-center" href="#">
-                            <span class="menu-icon">
-                                <i class="ri-feedback-line"></i>
-                            </span>
-                            <span class="menu-link">
-                                Survey</span>
-                        </a>
-                    </li>
                     <!-- / Dashboard Menu Section-->
+
+                    @if (Auth::user())
+                        <!-- Dashboard Menu Section-->
+                        <div>
+                            <li class="menu-section mt-4">Formulir</li>
+                            <li class="menu-item"><a class="d-flex align-items-center" href="{{ url('pembatalan') }}" wire:navigate>
+                                    <span class="menu-icon">
+                                        <i class="ri-close-circle-fill"></i>
+                                    </span>
+                                    <span class="menu-link">
+                                        Pembatalan
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="menu-item"><a class="d-flex align-items-center" href="{{ url('pelimpahan') }}" wire:navigate>
+                                    <span class="menu-icon">
+                                        <i class="ri-swap-box-line"></i>
+                                    </span>
+                                    <span class="menu-link">Pelimpahan </span>
+                                </a>
+                            </li>
+                            <li class="menu-item d-none"><a class="d-flex align-items-center" href="#">
+                                    <span class="menu-icon">
+                                        <i class="ri-feedback-line"></i>
+                                    </span>
+                                    <span class="menu-link">Survey</span>
+                                </a>
+                            </li>
+                            <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('kritiksaran') }}" wire:navigate>
+                                    <span class="menu-icon">
+                                        <i class="ri-feedback-line"></i>
+                                    </span>
+                                    <span class="menu-link">Daftar Kritik dan Saran</span>
+                                </a>
+                            </li>
+                        </div>
+                        <!-- / Dashboard Menu Section-->
+                    @endif
 
 
                 </ul>

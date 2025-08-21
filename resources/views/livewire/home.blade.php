@@ -20,6 +20,11 @@
 
     <!-- Content-->
     <section class="container-fluid">
+        <div class="row mb-2">
+            <div class="d-grid">
+                <a href="{{ route('addkritiksaran') }}" class="btn btn-warning" type="button">Kritik dan Saran</a>
+            </div>
+        </div>
         <div class="card">
             <div class="card-body row">
                 <div class="col-md-6">
