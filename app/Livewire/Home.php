@@ -4,12 +4,13 @@ namespace App\Livewire;
 
 use App\Models\Cancel;
 use App\Models\Delegation;
+use App\Models\Survey;
 use Livewire\Component;
 use Livewire\Attributes\Validate;
 
 class Home extends Component
 {
-    public $jenissurat = 'pelimpahan';
+    public $jenissurat = '';
 
     // 🔹 Property untuk pembatalan
     public $nomor_porsi;

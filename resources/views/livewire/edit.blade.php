@@ -7,13 +7,13 @@
             <nav class="mb-0" aria-label="breadcrumb">
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Data Surat</li>
                 </ol>
             </nav>
             <div class="d-flex justify-content-end align-items-center mt-3 mt-md-0">
-                <a class="btn btn-sm btn-primary" href="#"><i class="ri-add-circle-line align-bottom"></i> Ajuan
+                <a class="btn btn-sm btn-primary" href="{{ route('home') }}" wire:navigate><i class="ri-add-circle-line align-bottom"></i> Ajuan
                     Baru</a>
-                <a class="btn btn-sm btn-secondary-faded ms-2 text-body" href="#"><i class="ri-question-line align-bottom"></i> Help</a>
+                <a class="btn btn-sm btn-secondary-faded ms-2 text-body d-none" href="#"><i class="ri-question-line align-bottom"></i> Help</a>
             </div>
         </div>
     </div> <!-- / Breadcrumbs-->

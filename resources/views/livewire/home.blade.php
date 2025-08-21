@@ -11,9 +11,9 @@
                 </ol>
             </nav>
             <div class="d-flex justify-content-end align-items-center mt-3 mt-md-0">
-                <a class="btn btn-sm btn-primary" href="#"><i class="ri-add-circle-line align-bottom"></i> Ajuan
+                <a class="btn btn-sm btn-primary" href="{{ route('home') }}" wire:navigate><i class="ri-add-circle-line align-bottom"></i> Ajuan
                     Baru</a>
-                <a class="btn btn-sm btn-secondary-faded ms-2 text-body" href="#"><i class="ri-question-line align-bottom"></i> Help</a>
+                <a class="btn btn-sm btn-secondary-faded ms-2 text-body d-none" href="#"><i class="ri-question-line align-bottom"></i> Help</a>
             </div>
         </div>
     </div> <!-- / Breadcrumbs-->
@@ -21,12 +21,14 @@
     <!-- Content-->
     <section class="container-fluid">
         <div class="card">
-            <div class="card-body" style="max-width: 500px">
-                <select class="form-select" wire:model.live="jenissurat">
-                    {{-- <option>Pilih Jenis Surat</option> --}}
-                    <option value="pelimpahan">Surat Pelimpahan</option>
-                    {{-- <option value="pembatalan">Surat Pembatalan</option> --}}
-                </select>
+            <div class="card-body row">
+                <div class="col-md-6">
+                    <select class="form-select" wire:model.live="jenissurat">
+                        <option>Pilih Jenis Surat</option>
+                        <option value="pelimpahan">Surat Pelimpahan</option>
+                        <option value="pembatalan">Surat Pembatalan</option>
+                    </select>
+                </div>
             </div>
         </div>
 

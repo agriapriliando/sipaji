@@ -38,7 +38,16 @@
                             </span>
                             <span class="menu-link">
                                 Dashboard
-                            </span></a></li>
+                            </span></a>
+                    </li>
+                    <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('grafik') }}">
+                            <span class="menu-icon">
+                                <i class="ri-dashboard-line"></i>
+                            </span>
+                            <span class="menu-link">
+                                Grafik
+                            </span></a>
+                    </li>
                     <!-- / Dashboard Menu Section-->
 
                     <!-- Dashboard Menu Section-->
@@ -68,7 +77,7 @@
                                 Kritik dan Saran</span>
                         </a>
                     </li>
-                    <li class="menu-item"><a class="d-flex align-items-center" href="#">
+                    <li class="menu-item d-none"><a class="d-flex align-items-center" href="#">
                             <span class="menu-icon">
                                 <i class="ri-feedback-line"></i>
                             </span>
