@@ -28,7 +28,7 @@
                 <div class="card-header text-center">
                     <h3 class="card-title m-0">Login</h3>
                     @session('status')
-                        <div class="alert alert-danger mt-3" role="alert">
+                        <div class="alert alert-success mt-3" role="alert">
                             <strong>Terima Kasih!</strong> {{ session('status') }}
                         </div>
                     @endsession

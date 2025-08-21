@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Livewire\AkunSaya;
 use App\Livewire\Cancel;
 use App\Livewire\Cetak;
 use App\Livewire\Delegation;
@@ -27,6 +28,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('cetak/{jenis}/{id}', Cetak::class)->name('cetak');
     Route::get('edit/{jenis}/{id}', Edit::class)->name('edit');
     Route::get('kritiksaran', Feedback::class)->name('kritiksaran');
+    Route::get('akunsaya', AkunSaya::class)->name('akunsaya');
 });
 Route::get('grafik', Grafik::class)->name('grafik');
 Route::get('addkritiksaran', FeedbackAdd::class)->name('addkritiksaran');
