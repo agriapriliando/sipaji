@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Validate;
@@ -49,7 +50,7 @@ class AkunSaya extends Component
     {
         $this->validate();
 
-        $user = Auth::user();
+        $user = User::find(Auth::id());
 
         $data = [
             'name' => $this->name,

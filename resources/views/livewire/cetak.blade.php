@@ -1,6 +1,7 @@
 <!-- Each sheet element should have the class "sheet" -->
 <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
 <section class="sheet padding-15mm" x-data="{
+    btnprint: true,
     today: new Date().toISOString().slice(0, 10), // format awal: yyyy-mm-dd
     get todayFormatted() {
         return new Date(this.today).toLocaleDateString('id-ID', {
@@ -16,7 +17,7 @@
                 @if ($datasurat->status_surveys == true)
                     <i class="fa-solid fa-print" onclick="window.print()"></i>
                 @elseif ($datasurat->status_surveys == false)
-                    <i class="fa-solid fa-print" role="button" tabindex="0" id="btnPrintIcon" title="Cetak"></i>
+                    <i x-show="btnprint" class="fa-solid fa-print" role="button" tabindex="0" id="btnPrintIcon" title="Cetak"></i>
                 @endif
             </span>
             <span style="margin-right: 12px;">
@@ -32,18 +33,30 @@
         </button>
     </div>
     <!-- Modal Survei -->
+    <style>
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background-color: #ccc;
+            /* Example: light gray background */
+            color: #666;
+            /* Example: darker gray text */
+            pointer-events: none;
+            /* Prevents click events */
+        }
+    </style>
     <div id="customModal" class="modal-overlay" wire:ignore>
-        <div class="modal-box">
+        <div class="modal-box" x-data="{ kepuasan: '' }">
             <h5>Survei Kepuasan</h5>
 
             <form id="surveyForm" wire:submit.prevent="submitSurvey">
                 <p>Bagaimana tingkat kepuasan Anda terhadap layanan ini?</p>
 
                 <label>
-                    <input type="radio" name="kepuasan" value="1" wire:model.live="kepuasan"> Puas
+                    <input type="radio" name="kepuasan" value="1" x-model="kepuasan" wire:model="kepuasan"> Puas
                 </label><br>
                 <label>
-                    <input type="radio" name="kepuasan" value="0" wire:model.live="kepuasan"> Tidak Puas
+                    <input type="radio" name="kepuasan" value="0" x-model="kepuasan" wire:model="kepuasan"> Tidak Puas
                 </label>
 
                 <!-- error client-side -->
@@ -55,7 +68,10 @@
 
                 <div style="margin-top:15px; text-align:right;">
                     <button type="button" class="btn-cancel" id="btnCancel">Batal</button>
-                    <button type="submit" class="btn-submit">Kirim & Cetak</button>
+                    <button x-on:click="btnprint = false" type="submit" class="btn-submit" id="btnSubmit" :disabled="kepuasan === ''"
+                        :class="{ 'opacity-50 cursor-not-allowed': kepuasan === '' }">
+                        Kirim & Cetak
+                    </button>
                 </div>
             </form>
         </div>

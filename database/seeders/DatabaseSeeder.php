@@ -23,10 +23,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
-            DelegationSeeder::class,
-            CancelSeeder::class,
-            SurveySeeder::class,
-            FeedbackSeeder::class,
+            // DelegationSeeder::class,
+            // CancelSeeder::class,
+            // SurveySeeder::class,
+            // FeedbackSeeder::class,
         ]);
     }
 }
