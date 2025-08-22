@@ -25,13 +25,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- Vendor CSS -->
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/libs.bundle.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/theme.bundle.css" />
-
+    @stack('scriptsatas')
 
     <!-- Fix for custom scrollbar if JS is disabled-->
     <noscript>
@@ -75,13 +69,8 @@
     @yield('content')
 
     <x-sidebar></x-sidebar>
-    <!-- Theme JS -->
-    <!-- Vendor JS -->
-    <script src="{{ asset('') }}assets/js/vendor.bundle.js"></script>
 
-    <!-- Theme JS -->
-    <script src="{{ asset('') }}assets/js/theme.bundle.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    @stack('scriptsbawah')
     @stack('scripts')
 </body>
 
