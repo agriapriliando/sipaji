@@ -26,7 +26,7 @@
 
                     <!-- Dashboard Menu Section-->
                     @if (Auth::user())
-                        <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('home') }}" wire:navigate>
+                        <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('home') }}">
                                 <span class="menu-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="w-100">
                                         <rect fill-opacity=".5" fill="currentColor" x="3" y="3" width="7" height="7">
@@ -43,7 +43,7 @@
                         </li>
                     @endif
                     @if (Auth::user())
-                        <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('akunsaya') }}" wire:navigate>
+                        <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('akunsaya') }}">
                                 <span class="menu-icon">
                                     <i class="ri-user-line"></i>
                                 </span>
@@ -71,7 +71,7 @@
                                 Grafik
                             </span></a>
                     </li>
-                    <li class="menu-item bg-warning"><a class="d-flex align-items-center" href="{{ route('addkritiksaran') }}" wire:navigate>
+                    <li class="menu-item bg-warning"><a class="d-flex align-items-center" href="{{ route('addkritiksaran') }}">
                             <span class="menu-icon">
                                 <i class="ri-feedback-line"></i>
                             </span>
@@ -85,7 +85,7 @@
                         <!-- Dashboard Menu Section-->
                         <div>
                             <li class="menu-section mt-4">Formulir</li>
-                            <li class="menu-item"><a class="d-flex align-items-center" href="{{ url('pembatalan') }}" wire:navigate>
+                            <li class="menu-item"><a class="d-flex align-items-center" href="{{ url('pembatalan') }}">
                                     <span class="menu-icon">
                                         <i class="ri-close-circle-fill"></i>
                                     </span>
@@ -94,7 +94,7 @@
                                     </span>
                                 </a>
                             </li>
-                            <li class="menu-item"><a class="d-flex align-items-center" href="{{ url('pelimpahan') }}" wire:navigate>
+                            <li class="menu-item"><a class="d-flex align-items-center" href="{{ url('pelimpahan') }}">
                                     <span class="menu-icon">
                                         <i class="ri-swap-box-line"></i>
                                     </span>
@@ -108,7 +108,7 @@
                                     <span class="menu-link">Survey</span>
                                 </a>
                             </li>
-                            <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('kritiksaran') }}" wire:navigate>
+                            <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('kritiksaran') }}">
                                     <span class="menu-icon">
                                         <i class="ri-feedback-line"></i>
                                     </span>

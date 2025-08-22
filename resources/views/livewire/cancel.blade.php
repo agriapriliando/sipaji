@@ -30,7 +30,7 @@
                 </ol>
             </nav>
             <div class="d-flex justify-content-end align-items-center mt-3 mt-md-0">
-                <a class="btn btn-sm btn-primary" href="{{ route('home') }}" wire:navigate><i class="ri-add-circle-line align-bottom"></i> Ajuan
+                <a class="btn btn-sm btn-primary" href="{{ route('home') }}"><i class="ri-add-circle-line align-bottom"></i> Ajuan
                     Baru</a>
                 <a class="btn btn-sm btn-secondary-faded ms-2 text-body d-none" href="#"><i class="ri-question-line align-bottom"></i> Help</a>
                 <a class="btn btn-outline-primary btn-sm text-body ms-2" @click="copyTable"><i class="ri-file-copy-fill"></i> Copy</a>
@@ -109,7 +109,7 @@
                                                     <a target="_blank" href="{{ route('cetak', ['pembatalan', $item->id]) }}" class="btn btn-success btn-sm">
                                                         <i class="ri-printer-fill"></i>
                                                     </a>
-                                                    <a wire:navigate href="{{ route('edit', ['pembatalan', $item->id]) }}" class="btn btn-warning btn-sm">
+                                                    <a href="{{ route('edit', ['pembatalan', $item->id]) }}" class="btn btn-warning btn-sm">
                                                         <i class="ri-pencil-line"></i>
                                                     </a>
                                                     <button class="btn btn-danger btn-sm" @click="open = true" title="Hapus Data">
