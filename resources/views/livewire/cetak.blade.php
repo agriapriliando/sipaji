@@ -294,7 +294,7 @@
                         <td style="vertical-align: top;">Bin/Binti</td>
                         <td style="vertical-align: top;">: </td>
                         <td>
-                            <span>{{ $datasurat->bin_binti ? $datasurat->bin_binti : '-' }}</span>
+                            <span>{{ $datasurat->bin_binti_asal ? $datasurat->bin_binti_asal : '-' }}</span>
                             <span class="noprint" style="font-style: italic;">(Nama Ayah Penerima Pelimpahan)</span>
                         </td>
                     </tr>
