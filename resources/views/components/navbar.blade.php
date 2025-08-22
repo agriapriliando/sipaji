@@ -31,11 +31,6 @@
             @if (Auth::user())
                 <!-- Right Side Widgets-->
                 <div class="d-flex align-items-center">
-                    <!-- Profile Menu-->
-                    <a href="{{ route('akunsaya') }}" wire:navigate class="btn btn-success btn-sm text-white me-2">
-                        <i class="ri-user-line"></i>
-                        Haii, {{ Auth::user()->name }}
-                    </a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" class="btn btn-danger btn-sm text-white">

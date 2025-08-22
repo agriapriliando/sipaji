@@ -42,6 +42,16 @@
                                 </span></a>
                         </li>
                     @endif
+                    @if (Auth::user())
+                        <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('akunsaya') }}" wire:navigate>
+                                <span class="menu-icon">
+                                    <i class="ri-user-line"></i>
+                                </span>
+                                <span class="menu-link">
+                                    Haii, {{ Auth::user()->name }}</span>
+                            </a>
+                        </li>
+                    @endif
                     @if (!Auth::user())
                         <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('login') }}" wire:navigate>
                                 <span class="menu-icon">
