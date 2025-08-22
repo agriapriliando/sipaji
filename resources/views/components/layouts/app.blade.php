@@ -48,7 +48,6 @@
     <!-- Page Title -->
     <title>{{ $title ?? 'Form Haji - Dashboard' }}</title>
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <style>
     [x-cloak] {
