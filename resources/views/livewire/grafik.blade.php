@@ -11,8 +11,6 @@
                 </ol>
             </nav>
             <div class="d-flex justify-content-end align-items-center mt-3 mt-md-0">
-                <a class="btn btn-sm btn-primary" href="{{ route('home') }}" wire:navigate><i class="ri-add-circle-line align-bottom"></i> Ajuan
-                    Baru</a>
                 <a class="btn btn-sm btn-secondary-faded ms-2 text-body d-none" href="#"><i class="ri-question-line align-bottom"></i> Help</a>
             </div>
         </div>

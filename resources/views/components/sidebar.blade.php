@@ -53,7 +53,7 @@
                         </li>
                     @endif
                     @if (!Auth::user())
-                        <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('login') }}" wire:navigate>
+                        <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('login') }}">
                                 <span class="menu-icon">
                                     <i class="ri-login-box-line"></i>
                                 </span>
