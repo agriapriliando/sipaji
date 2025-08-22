@@ -18,8 +18,8 @@
 
     <!-- Content-->
     <section class="container-fluid">
+        <!-- Chart Survey-->
         <div class="row">
-            <!-- Chart Survey-->
             <div class="col-12 col-md-6">
                 <div class="card">
                     <div class="card-body">
@@ -29,11 +29,13 @@
                     </div>
                 </div>
             </div>
-            <!-- Chart Surat-->
+        </div>
+        <!-- Chart Surat-->
+        <div class="row">
             <style>
                 #surat_chart {
                     width: 100% !important;
-                    height: 400px !important;
+                    height: 280px !important;
                     /* bisa diubah sesuai kebutuhan */
                 }
             </style>
