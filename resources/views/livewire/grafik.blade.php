@@ -20,7 +20,7 @@
     <section class="container-fluid">
         <div class="row">
             <!-- Chart Survey-->
-            <div class="col-6">
+            <div class="col-12 col-md-6">
                 <div class="card">
                     <div class="card-body">
                         <div class="chart chart-lg">
@@ -37,7 +37,7 @@
                     /* bisa diubah sesuai kebutuhan */
                 }
             </style>
-            <div class="col-6">
+            <div class="col-12 col-md-6">
                 <div class="card">
                     <div class="card-body">
                         <div class="chart chart-lg">
