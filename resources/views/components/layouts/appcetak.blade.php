@@ -174,6 +174,10 @@
         .bold {
             font-weight: bold;
         }
+
+        .text-white {
+            color: white;
+        }
     </style>
     @stack('styles')
 </head>
