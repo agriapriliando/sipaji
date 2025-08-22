@@ -215,7 +215,7 @@
                 <tbody>
                     <tr>
                         <td style="width: 60%;"></td>
-                        <td>Pemohon</td>
+                        <td>Pemohon,</td>
                     </tr>
                     <tr height="100px">
                         <td></td>
@@ -348,7 +348,7 @@
                 <tr>
                     <td width="100px;"></td>
                     <td>Dengan ini mengajukan permohonan sebagaimana perihal di atas dikarenakan
-                        <span>Ibu Saya Hamidah binti H. Hamzah meninggal dunia</span>.
+                        <span class="bold">{{ $datasurat->alasan_pelimpahan }}</span>.
                         Bersama ini kami lampirkan berkas persyaratan sebagai berikut.
                     </td>
                 </tr>
@@ -388,7 +388,7 @@
                 <tbody>
                     <tr>
                         <td style="width: 60%;"></td>
-                        <td>Pemohon</td>
+                        <td>Pemohon,</td>
                     </tr>
                     <tr height="100px">
                         <td></td>
@@ -398,7 +398,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td>KOMARIAH</td>
+                        <td><span class="bold">{{ $datasurat->nama_penerima }}</span>.</td>
                     </tr>
                 </tbody>
             </table>
