@@ -100,11 +100,7 @@
             </div>
         </div>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <p class="small text-muted m-0">All rights reserved | © {{ date('Y') }}</p>
-            <p class="small text-muted m-0">Template created by <a href="https://www.pixelrocket.store/">PixelRocket</a></p>
-        </footer>
+        <x-footer></x-footer>
 
         <!-- Sidebar Menu Overlay-->
         <div class="menu-overlay-bg"></div>

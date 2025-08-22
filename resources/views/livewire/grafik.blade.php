@@ -18,8 +18,8 @@
 
     <!-- Content-->
     <section class="container-fluid">
-        <!-- Chart Survey-->
         <div class="row">
+            <!-- Chart Survey-->
             <div class="col-12 col-md-6">
                 <div class="card">
                     <div class="card-body">
@@ -29,9 +29,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Chart Surat-->
-        <div class="row">
+            <!-- Chart Surat-->
             <style>
                 #surat_chart {
                     width: 100% !important;
@@ -50,12 +48,7 @@
             </div>
         </div>
 
-        <!-- Footer -->
-        <footer class="  footer">
-            <p class="small text-muted m-0">All rights reserved | © 2021</p>
-            <p class="small text-muted m-0">Template created by <a href="https://www.pixelrocket.store/">PixelRocket</a></p>
-        </footer>
-
+        <x-footer></x-footer>
 
         <!-- Sidebar Menu Overlay-->
         <div class="menu-overlay-bg"></div>
