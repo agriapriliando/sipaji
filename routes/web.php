@@ -21,12 +21,13 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
+Route::get('/', Home::class)->name('home');
+Route::get('edit/{jenis}/{id}', Edit::class)->name('edit');
+Route::get('cetak/{jenis}/{id}', Cetak::class)->name('cetak');
+Route::get('survey', Home::class)->name('survey');
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', Home::class)->name('home');
     Route::get('pembatalan', Cancel::class)->name('daftar.pembatalan');
     Route::get('pelimpahan', Delegation::class)->name('daftar.pelimpahan');
-    Route::get('cetak/{jenis}/{id}', Cetak::class)->name('cetak');
-    Route::get('edit/{jenis}/{id}', Edit::class)->name('edit');
     Route::get('kritiksaran', Feedback::class)->name('kritiksaran');
     Route::get('akunsaya', AkunSaya::class)->name('akunsaya');
 });

@@ -64,6 +64,43 @@ class Home extends Component
     // public string $status_surveys = '0'; // misalnya 0 = belum, 1 = sudah
     // #[Validate('required|string|max:50')]
     // public string $jenis_persyaratan = '';
+
+    public $target_type;
+    public $target_id = null;
+    public $layanan;
+    public $kepuasan;
+
+    public function rules_survey()
+    {
+        return [
+            'target_type' => 'nullable|string|max:255',
+            'target_id'   => 'nullable|integer',
+            'layanan'     => 'required|in:pendaftaran,pembatalan,pelimpahan',
+            'kepuasan'    => 'required|in:puas,tidak_puas',
+        ];
+    }
+
+    public function addSurvey()
+    {
+        $data = $this->validate($this->rules_survey());
+
+        if ($this->layanan == 'pembatalan') {
+            $data['target_type'] = Cancel::class;
+        } elseif ($this->layanan == 'pelimpahan') {
+            $data['target_type'] = Delegation::class;
+        } else {
+            $data['target_type'] = 'pendaftaran';
+        }
+
+        // misalnya kalau target_id bisa didapat dari user login atau input lain
+        $data['target_id'] = 11111111111111111111111;
+
+        Survey::create($data);
+
+        $this->reset();
+
+        $this->dispatch('survey-success', message: 'Terima Kasih Telah Mengisi Survey Kepuasan!');
+    }
     public function rules_pembatalan()
     {
         return [
@@ -232,6 +269,7 @@ class Home extends Component
         // redirect ke halaman cetak pelimpahan
         return redirect()->route('cetak', ['jenis' => 'pelimpahan', 'id' => $data->id]);
     }
+
     public function render()
     {
         return view('livewire.home');

@@ -27,6 +27,7 @@ class SurveySeeder extends Seeder
             Survey::create([
                 'target_type' => Cancel::class,
                 'target_id'   => $cancel->id,
+                'layanan'    => 'pembatalan',
                 'kepuasan'    => 'puas',
             ]);
         }
@@ -36,6 +37,7 @@ class SurveySeeder extends Seeder
             Survey::create([
                 'target_type' => Delegation::class,
                 'target_id'   => $delegation->id,
+                'layanan'    => 'pelimpahan',
                 'kepuasan'    => 'tidak puas',
             ]);
         }
@@ -49,6 +51,7 @@ class SurveySeeder extends Seeder
                 Survey::create([
                     'target_type' => $modelClass,
                     'target_id'   => $model->id,
+                    'layanan'    => $faker->randomElement(['pendaftaran', 'pembatalan', 'pelimpahan']),
                     'kepuasan'    => $faker->randomElement(['puas', 'tidak puas']),
                 ]);
             }

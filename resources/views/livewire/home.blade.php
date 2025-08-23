@@ -11,25 +11,291 @@
                 </ol>
             </nav>
             <div class="d-flex justify-content-end align-items-center mt-3 mt-md-0">
-                <a class="btn btn-sm btn-primary" href="{{ route('home') }}"><i class="ri-add-circle-line align-bottom"></i> Ajuan
+                <a class="btn btn-sm btn-primary d-none" href="{{ route('home') }}"><i class="ri-add-circle-line align-bottom"></i> Ajuan
                     Baru</a>
                 <a class="btn btn-sm btn-secondary-faded ms-2 text-body d-none" href="#"><i class="ri-question-line align-bottom"></i> Help</a>
             </div>
+            {{-- toast --}}
+            <div class="toast-container position-fixed top-0 start-50 translate-middle-x">
+                <div id="liveToast" class="toast mt-3" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <strong class="me-auto" id="pesan"></strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+            {{-- toast --}}
         </div>
     </div> <!-- / Breadcrumbs-->
 
     <!-- Content-->
-    <section class="container-fluid">
+    <section class="container-fluid" x-data="{ informasi: '', survey: '' }">
         <div class="row mb-2">
-            <div class="d-grid">
+            <div class="col-6 d-grid mb-1">
                 <a href="{{ route('addkritiksaran') }}" class="btn btn-warning" type="button">Kritik dan Saran</a>
+            </div>
+            <div class="col-6 d-grid mb-1">
+                <button @click="survey = 'terbuka'" class="btn btn-success" type="button">Surveys</button>
+            </div>
+        </div>
+        @if (session()->has('surveysuccess'))
+            <div x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 5000)" class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                {{ session('surveysuccess') }}
+                <button type="button" class="btn-close" @click="show = false" aria-label="Close"></button>
+            </div>
+        @endif
+        <div x-show="survey == 'terbuka'" class="row" x-transition @click.away="survey = ''">
+            <div class="col">
+                <form wire:submit.prevent="addSurvey" method="POST" class="survey-form">
+                    @csrf
+
+                    {{-- hidden polymorphic target (opsional, kalau mau pakai polymorphic) --}}
+                    <input type="hidden" wire:model="target_id" value="11111111-1111-1111-1111-111111111111">
+
+                    <!-- Pilih Layanan -->
+                    <h3 class="survey-title">Survey Kepuasan Pelayanan :</h3>
+                    <div class="survey-options">
+                        <label class="survey-option layanan">
+                            <input type="radio" wire:model.live="layanan" value="pendaftaran" required>
+                            <div class="icon">🕌</div>
+                            <span>Pendaftaran Haji</span>
+                        </label>
+
+                        <label class="survey-option layanan">
+                            <input type="radio" wire:model.live="layanan" value="pembatalan" required>
+                            <div class="icon">❌</div>
+                            <span>Pembatalan</span>
+                        </label>
+
+                        <label class="survey-option layanan">
+                            <input type="radio" wire:model.live="layanan" value="pelimpahan" required>
+                            <div class="icon">🔄</div>
+                            <span>Pelimpahan Porsi Haji</span>
+                        </label>
+                    </div>
+                    @error('layanan')
+                        <div class="error">{{ $message }}</div>
+                    @enderror
+
+                    <!-- Pilih Kepuasan -->
+                    <h3 class="survey-title">Bagaimana tingkat kepuasan Anda?</h3>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" wire:model.live="kepuasan" value="puas" required>
+                            <div class="icon puas">😊</div>
+                            <span>Puas</span>
+                        </label>
+
+                        <label class="survey-option">
+                            <input type="radio" wire:model.live="kepuasan" value="tidak_puas" required>
+                            <div class="icon tidak-puas">😞</div>
+                            <span>Tidak Puas</span>
+                        </label>
+                    </div>
+                    @error('kepuasan')
+                        <div class="error">{{ $message }}</div>
+                    @enderror
+
+                    <!-- Submit -->
+                    @if ($kepuasan != '' && $layanan != '')
+                        <button type="submit" class="btn-submit" @click="survey = ''">Kirim Surveys</button>
+                    @endif
+                </form>
+
+                <style>
+                    /* Container Form */
+                    .survey-form {
+                        max-width: 500px;
+                        margin: 15px auto;
+                        padding: 15px;
+                        border-radius: 12px;
+                        background: #fdfdfd;
+                        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+                        font-family: Arial, sans-serif;
+                        text-align: center;
+                    }
+
+                    /* Judul section */
+                    .survey-title {
+                        margin: 15px 0 10px;
+                        font-size: 1rem;
+                        font-weight: bold;
+                    }
+
+                    /* Wrapper pilihan */
+                    .survey-options {
+                        display: flex;
+                        justify-content: center;
+                        gap: 8px;
+                        /* jarak antar tombol lebih kecil */
+                        margin-bottom: 12px;
+                        overflow-x: auto;
+                        /* scroll horizontal di mobile */
+                        flex-wrap: nowrap;
+                        padding-bottom: 5px;
+                        scrollbar-width: thin;
+                    }
+
+                    /* Tombol pilihan */
+                    .survey-option {
+                        flex: 0 0 auto;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        cursor: pointer;
+                        padding: 6px;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        width: 85px;
+                        /* lebih kecil */
+                        transition: all 0.3s ease;
+                        font-size: 0.75rem;
+                        /* tulisan lebih kecil */
+                        background: #fff;
+                    }
+
+                    /* Hilangkan radio bawaan */
+                    .survey-option input {
+                        display: none;
+                    }
+
+                    /* Icon lebih kecil */
+                    .survey-option .icon {
+                        font-size: 1.4rem;
+                        /* sebelumnya 1.8rem */
+                        margin-bottom: 3px;
+                    }
+
+                    /* Warna icon */
+                    .survey-option .puas {
+                        color: #28a745;
+                    }
+
+                    .survey-option .tidak-puas {
+                        color: #dc3545;
+                    }
+
+                    /* Hover */
+                    .survey-option:hover {
+                        background: #f8f8f8;
+                        border-color: #aaa;
+                    }
+
+                    /* Checked */
+                    .survey-option input:checked+.icon,
+                    .survey-option input:checked+.icon+span {
+                        font-weight: bold;
+                        color: #202020;
+                        border: #424242 2px solid;
+                        border-radius: 3px;
+                        padding: 2px;
+                    }
+
+                    .survey-option input:checked+.icon {
+                        padding: 4px;
+                        border-radius: 50%;
+                    }
+
+                    .survey-option input:checked+.icon.puas {
+                        background: #28a745;
+                    }
+
+                    .survey-option input:checked+.icon.tidak-puas {
+                        background: #dc3545;
+                    }
+
+                    /* Error */
+                    .error {
+                        color: #dc3545;
+                        font-size: 0.8rem;
+                        margin-bottom: 8px;
+                    }
+
+                    /* Tombol submit lebih kecil */
+                    .btn-submit {
+                        background: #007bff;
+                        color: #fff;
+                        padding: 6px 15px;
+                        border: none;
+                        border-radius: 6px;
+                        cursor: pointer;
+                        font-size: 0.85rem;
+                        transition: background 0.3s ease;
+                    }
+
+                    .btn-submit:hover {
+                        background: #0056b3;
+                    }
+
+                    /* Mobile responsive */
+                    @media (max-width: 400px) {
+                        .survey-option {
+                            width: 75px;
+                            padding: 5px;
+                            font-size: 0.7rem;
+                        }
+
+                        .survey-option .icon {
+                            font-size: 1.2rem;
+                        }
+
+                        .btn-submit {
+                            width: 100%;
+                            padding: 8px 0;
+                        }
+                    }
+                </style>
             </div>
         </div>
         <div class="card">
             <div class="card-body row">
-                <div class="col-md-6">
+                <!-- Tombol -->
+                <div class="col-md-3 d-grid mb-2">
+                    <button class="btn btn-primary" type="button" @click="informasi = 'pendaftaran'">
+                        Informasi Pendaftaran Haji
+                    </button>
+                </div>
+                <div class="col-md-3 d-grid mb-2">
+                    <button class="btn btn-primary" type="button" @click="informasi = 'pembatalan'">
+                        Informasi Pembatalan Nomor Porsi
+                    </button>
+                </div>
+                <div class="col-md-3 d-grid mb-2">
+                    <button class="btn btn-primary" type="button" @click="informasi = 'pelimpahan'">
+                        Informasi Pelimpahan Nomor Porsi
+                    </button>
+                </div>
+
+                <!-- Konten -->
+                <div class="col-12 mb-3" x-show="informasi === 'pendaftaran'" x-transition>
+                    <h3>Informasi Pendaftaran Haji</h3>
+                    <p>
+                        Untuk informasi lengkap mengenai pendaftaran haji, silakan kunjungi situs resmi Kementerian Agama
+                        atau hubungi kantor Kementerian Agama terdekat.
+                    </p>
+                    <button class="btn btn-sm btn-warning" type="button" @click="informasi = ''"><i class="ri-close-line"></i> Tutup Informasi</button>
+                </div>
+
+                <div class="col-12 mb-3" x-show="informasi === 'pembatalan'" x-transition>
+                    <h3>Informasi Pembatalan Nomor Porsi</h3>
+                    <p>
+                        Proses pembatalan nomor porsi haji dapat dilakukan dengan mengisi formulir pembatalan yang tersedia
+                        di website ini. Pastikan untuk melengkapi semua informasi yang diperlukan agar proses pembatalan
+                        dapat berjalan lancar.
+                    </p>
+                    <button class="btn btn-sm btn-warning" type="button" @click="informasi = ''"><i class="ri-close-line"></i> Tutup Informasi</button>
+                </div>
+                <div class="col-12 mb-3" x-show="informasi === 'pelimpahan'" x-transition>
+                    <h3>Informasi Pelimpahan Nomor Porsi</h3>
+                    <p>
+                        Pelimpahan nomor porsi haji dapat dilakukan kepada anggota keluarga atau pihak lain yang memenuhi syarat.
+                        Silakan isi formulir pelimpahan yang tersedia di website ini dan pastikan semua informasi yang diberikan akurat.
+                    </p>
+                    <button class="btn btn-sm btn-warning" type="button" @click="informasi = ''"><i class="ri-close-line"></i> Tutup Informasi</button>
+                </div>
+                <div class="col-md-3 mb-2">
                     <select class="form-select" wire:model.live="jenissurat">
-                        <option>Pilih Jenis Surat</option>
+                        <option>Pilih Formulir</option>
                         <option value="pelimpahan">Surat Pelimpahan</option>
                         <option value="pembatalan">Surat Pembatalan</option>
                     </select>
@@ -331,6 +597,24 @@
 
 </main>
 <!-- /Page Content -->
+@script
+    <script>
+        $wire.on('survey-success', (event) => {
+            var element = document.getElementById('liveToast');
+            console.log(event.message);
+            const myToast = bootstrap.Toast.getOrCreateInstance(element);
+            setTimeout(function() {
+                myToast.show();
+                document.getElementById('pesan').innerHTML = event.message;
+                element.className += " text-bg-success";
+                console.log(event.message);
+            }, 10);
+            setTimeout(function() {
+                myToast.hide();
+            }, 3000);
+        });
+    </script>
+@endscript
 
 @push('scriptsatas')
     <!-- Vendor CSS -->

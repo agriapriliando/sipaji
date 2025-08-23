@@ -16,8 +16,8 @@ return new class extends Migration
 
             // Polymorphic relation
             $table->string('target_type'); // Model class (ex: App\Models\Cancel)
-            $table->uuid('target_id'); // ID dari model target
-
+            $table->uuid('target_id')->default('11111111-1111-1111-1111-111111111111'); // ID dari model target
+            $table->string('layanan', 100); // contoh: "pembatalan" / "pelimpahan"
             $table->string('kepuasan', 50); // contoh: "puas" / "tidak puas"
 
             $table->timestamps();

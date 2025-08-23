@@ -9,6 +9,7 @@ class Survey extends Model
     protected $fillable = [
         'target_type',
         'target_id',
+        'layanan',
         'kepuasan',
     ];
 

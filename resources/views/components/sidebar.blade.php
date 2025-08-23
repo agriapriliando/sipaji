@@ -25,23 +25,21 @@
                 <ul class="list-unstyled mb-6">
 
                     <!-- Dashboard Menu Section-->
-                    @if (Auth::user())
-                        <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('home') }}">
-                                <span class="menu-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="w-100">
-                                        <rect fill-opacity=".5" fill="currentColor" x="3" y="3" width="7" height="7">
-                                        </rect>
-                                        <rect fill="currentColor" x="14" y="3" width="7" height="7"></rect>
-                                        <rect fill-opacity=".5" fill="currentColor" x="14" y="14" width="7" height="7">
-                                        </rect>
-                                        <rect fill="currentColor" x="3" y="14" width="7" height="7"></rect>
-                                    </svg>
-                                </span>
-                                <span class="menu-link">
-                                    Dashboard
-                                </span></a>
-                        </li>
-                    @endif
+                    <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('home') }}">
+                            <span class="menu-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="w-100">
+                                    <rect fill-opacity=".5" fill="currentColor" x="3" y="3" width="7" height="7">
+                                    </rect>
+                                    <rect fill="currentColor" x="14" y="3" width="7" height="7"></rect>
+                                    <rect fill-opacity=".5" fill="currentColor" x="14" y="14" width="7" height="7">
+                                    </rect>
+                                    <rect fill="currentColor" x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                            </span>
+                            <span class="menu-link">
+                                Dashboard
+                            </span></a>
+                    </li>
                     @if (Auth::user())
                         <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('akunsaya') }}">
                                 <span class="menu-icon">
