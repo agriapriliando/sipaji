@@ -52,6 +52,7 @@ class Cetak extends Component
             Survey::create([
                 'target_type' => Cancel::class,
                 'target_id'   => $this->id,
+                'layanan'    => 'pembatalan',
                 'kepuasan'    => $this->kepuasan, // 'puas' | 'tidak_puas'
             ]);
             $cancel = Cancel::find($this->id);
@@ -63,6 +64,7 @@ class Cetak extends Component
             Survey::create([
                 'target_type' => Delegation::class,
                 'target_id'   => $this->id,
+                'layanan'    => 'pelimpahan',
                 'kepuasan'    => $this->kepuasan, // 'puas' | 'tidak_puas'
             ]);
             $delegation = Delegation::find($this->id);
