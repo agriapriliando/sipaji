@@ -20,11 +20,41 @@
     <section class="container-fluid">
         <div class="row">
             <!-- Chart Survey-->
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-4 d-none">
                 <div class="card">
                     <div class="card-body">
                         <div class="chart chart-lg">
                             <canvas id="surveys_chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Chart Survey Pendaftaran-->
+            <div class="col-12 col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="chart chart-lg">
+                            <canvas id="pendaftaranChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Chart Survey Pembatalan-->
+            <div class="col-12 col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="chart chart-lg">
+                            <canvas id="pembatalanChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Chart Survey Pelimpahan-->
+            <div class="col-12 col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="chart chart-lg">
+                            <canvas id="pelimpahanChart"></canvas>
                         </div>
                     </div>
                 </div>
@@ -105,6 +135,168 @@
                         title: {
                             display: true,
                             text: ['Grafik Survey Kepuasan', 'Total Survey: ' + {{ $jumlah_survey }}],
+                            font: {
+                                size: 16
+                            }
+                        },
+                    }
+                },
+                plugins: [ChartDataLabels]
+            });
+        }
+    </script>
+    {{-- Chart Pendaftaran --}}
+    <script>
+        const pendaftaranChart = document.querySelector('#pendaftaranChart');
+        const datapendaftaranChart = {
+            labels: [
+                'Puas',
+                'Tidak Puas',
+            ],
+            datasets: [{
+                // label: 'My First Dataset',
+                data: [{{ $pendaftaran_puas }}, {{ $pendaftaran_tidak_puas }}],
+                backgroundColor: [
+                    'rgb(75, 192, 75)',
+                    'rgb(255, 99, 132)',
+                ],
+                hoverOffset: 4
+            }]
+        };
+        if (pendaftaranChart) {
+            new Chart(pendaftaranChart, {
+                type: 'doughnut',
+                data: datapendaftaranChart,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false, // biar tinggi ikut CSS
+                    plugins: {
+                        datalabels: {
+                            color: 'black',
+                            font: {
+                                size: 12,
+                                weight: 'bold'
+                            },
+                            formatter: (value, context) => {
+                                const labelpendaftaran = context.chart.data.labels[context.dataIndex];
+                                const totalpendaftaran = context.chart.data.datasets[0].data
+                                    .reduce((sum, val) => sum + val, 0);
+                                const percentagependaftaran = ((value / totalpendaftaran) * 100).toFixed(1);
+                                // contoh output: Puas: 90 (75.0%)
+                                return `${labelpendaftaran}: ${value} (${percentagependaftaran}%)`;
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: ['Survey Kepuasan Layanan', 'Pendaftaran Haji', 'Total Survey: ' + {{ $pendaftaran_total }}],
+                            font: {
+                                size: 16
+                            }
+                        },
+                    }
+                },
+                plugins: [ChartDataLabels]
+            });
+        }
+    </script>
+    {{-- Chart Pembatalan --}}
+    <script>
+        const pembatalanChart = document.querySelector('#pembatalanChart');
+        const datapembatalanChart = {
+            labels: [
+                'Puas',
+                'Tidak Puas',
+            ],
+            datasets: [{
+                // label: 'My First Dataset',
+                data: [{{ $pembatalan_puas }}, {{ $pembatalan_tidak_puas }}],
+                backgroundColor: [
+                    'rgb(75, 192, 75)',
+                    'rgb(255, 99, 132)',
+                ],
+                hoverOffset: 4
+            }]
+        };
+        if (pembatalanChart) {
+            new Chart(pembatalanChart, {
+                type: 'doughnut',
+                data: datapembatalanChart,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false, // biar tinggi ikut CSS
+                    plugins: {
+                        datalabels: {
+                            color: 'black',
+                            font: {
+                                size: 12,
+                                weight: 'bold'
+                            },
+                            formatter: (value, context) => {
+                                const labelpembatalan = context.chart.data.labels[context.dataIndex];
+                                const totalpembatalan = context.chart.data.datasets[0].data
+                                    .reduce((sum, val) => sum + val, 0);
+                                const percentagepembatalan = ((value / totalpembatalan) * 100).toFixed(1);
+                                // contoh output: Puas: 90 (75.0%)
+                                return `${labelpembatalan}: ${value} (${percentagepembatalan}%)`;
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: ['Survey Kepuasan Layanan', 'Pembatalan', 'Total Survey: ' + {{ $pembatalan_total }}],
+                            font: {
+                                size: 16
+                            }
+                        },
+                    }
+                },
+                plugins: [ChartDataLabels]
+            });
+        }
+    </script>
+    {{-- Chart pelimpahan --}}
+    <script>
+        const pelimpahanChart = document.querySelector('#pelimpahanChart');
+        const datapelimpahanChart = {
+            labels: [
+                'Puas',
+                'Tidak Puas',
+            ],
+            datasets: [{
+                // label: 'My First Dataset',
+                data: [{{ $pelimpahan_puas }}, {{ $pelimpahan_tidak_puas }}],
+                backgroundColor: [
+                    'rgb(75, 192, 75)',
+                    'rgb(255, 99, 132)',
+                ],
+                hoverOffset: 4
+            }]
+        };
+        if (pelimpahanChart) {
+            new Chart(pelimpahanChart, {
+                type: 'doughnut',
+                data: datapelimpahanChart,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false, // biar tinggi ikut CSS
+                    plugins: {
+                        datalabels: {
+                            color: 'black',
+                            font: {
+                                size: 12,
+                                weight: 'bold'
+                            },
+                            formatter: (value, context) => {
+                                const label = context.chart.data.labels[context.dataIndex];
+                                const total = context.chart.data.datasets[0].data
+                                    .reduce((sum, val) => sum + val, 0);
+                                const percentage = ((value / total) * 100).toFixed(1);
+                                // contoh output: Puas: 90 (75.0%)
+                                return `${label}: ${value} (${percentage}%)`;
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: ['Survey Kepuasan Layanan', 'Pelimpahan Porsi Haji', 'Total Survey: ' + {{ $pelimpahan_total }}],
                             font: {
                                 size: 16
                             }

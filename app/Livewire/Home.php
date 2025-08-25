@@ -91,13 +91,11 @@ class Home extends Component
         } else {
             $data['target_type'] = 'pendaftaran';
         }
-
-        // misalnya kalau target_id bisa didapat dari user login atau input lain
-        $data['target_id'] = 11111111111111111111111;
+        $data['target_id'] = 111111111;
 
         Survey::create($data);
 
-        $this->reset();
+        // $this->reset();
 
         $this->dispatch('survey-success', message: 'Terima Kasih Telah Mengisi Survey Kepuasan!');
     }
