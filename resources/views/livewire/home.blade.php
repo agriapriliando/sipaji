@@ -30,6 +30,11 @@
 
     <!-- Content-->
     <section class="container-fluid" x-data="{ informasi: '', survey: '' }">
+        @if (session()->has('success'))
+            <div class="alert alert-success mt-3">
+                {{ session('success') }}
+            </div>
+        @endif
         <div class="row mb-2">
             <div class="col-6 d-grid mb-1">
                 <a href="{{ route('addkritiksaran') }}" class="btn btn-warning" type="button">Kritik dan Saran</a>

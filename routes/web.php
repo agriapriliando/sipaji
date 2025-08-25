@@ -32,6 +32,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('kritiksaran', Feedback::class)->name('kritiksaran');
     Route::get('akunsaya', AkunSaya::class)->name('akunsaya');
     Route::get('informasi', InfoOption::class)->name('informasi');
+    Route::get('resetsurvey', function () {
+        \App\Models\Survey::truncate();
+        return redirect()->route('home')->with('success', 'Data survey berhasil direset.');
+    });
 });
 Route::get('grafik', Grafik::class)->name('grafik');
 Route::get('addkritiksaran', FeedbackAdd::class)->name('addkritiksaran');
