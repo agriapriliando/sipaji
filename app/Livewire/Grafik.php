@@ -20,8 +20,8 @@ class Grafik extends Component
     public function mount()
     {
         $surveyStats = Survey::selectRaw("
-        SUM(CASE WHEN kepuasan = '1' THEN 1 ELSE 0 END) as puas,
-        SUM(CASE WHEN kepuasan = '0' THEN 1 ELSE 0 END) as belum,
+        SUM(CASE WHEN kepuasan = 'puas' THEN 1 ELSE 0 END) as puas,
+        SUM(CASE WHEN kepuasan = 'tidak_puas' THEN 1 ELSE 0 END) as belum,
         COUNT(*) as total
     ")->first();
 
