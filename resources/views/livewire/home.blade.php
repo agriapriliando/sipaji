@@ -50,7 +50,7 @@
                     @csrf
 
                     {{-- hidden polymorphic target (opsional, kalau mau pakai polymorphic) --}}
-                    <input type="hidden" wire:model="target_id" value="11111111-1111-1111-1111-111111111111">
+                    <input type="hidden" wire:model="target_id" value="homepage">
 
                     <!-- Pilih Layanan -->
                     <h3 class="survey-title">Survey Kepuasan Pelayanan :</h3>
@@ -268,28 +268,27 @@
 
                 <!-- Konten -->
                 <div class="col-12 mb-3" x-show="informasi === 'pendaftaran'" x-transition>
-                    <h3>Informasi Pendaftaran Haji</h3>
+                    <h3>{{ $informasi[0]['judul_informasi'] }}</h3>
+                    <img src="{{ url('storage/' . $informasi[0]['gambar']) }}" class="img-fluid mb-2" alt="">
                     <p>
-                        Untuk informasi lengkap mengenai pendaftaran haji, silakan kunjungi situs resmi Kementerian Agama
-                        atau hubungi kantor Kementerian Agama terdekat.
+                        {{ $informasi[0]['isi_informasi'] }}
                     </p>
                     <button class="btn btn-sm btn-warning" type="button" @click="informasi = ''"><i class="ri-close-line"></i> Tutup Informasi</button>
                 </div>
 
                 <div class="col-12 mb-3" x-show="informasi === 'pembatalan'" x-transition>
-                    <h3>Informasi Pembatalan Nomor Porsi</h3>
+                    <h3>{{ $informasi[1]['judul_informasi'] }}</h3>
+                    <img src="{{ url('storage/' . $informasi[1]['gambar']) }}" class="img-fluid mb-2" alt="">
                     <p>
-                        Proses pembatalan nomor porsi haji dapat dilakukan dengan mengisi formulir pembatalan yang tersedia
-                        di website ini. Pastikan untuk melengkapi semua informasi yang diperlukan agar proses pembatalan
-                        dapat berjalan lancar.
+                        {{ $informasi[1]['isi_informasi'] }}
                     </p>
                     <button class="btn btn-sm btn-warning" type="button" @click="informasi = ''"><i class="ri-close-line"></i> Tutup Informasi</button>
                 </div>
                 <div class="col-12 mb-3" x-show="informasi === 'pelimpahan'" x-transition>
-                    <h3>Informasi Pelimpahan Nomor Porsi</h3>
+                    <h3>{{ $informasi[2]['judul_informasi'] }}</h3>
+                    <img src="{{ url('storage/' . $informasi[2]['gambar']) }}" class="img-fluid mb-2" alt="">
                     <p>
-                        Pelimpahan nomor porsi haji dapat dilakukan kepada anggota keluarga atau pihak lain yang memenuhi syarat.
-                        Silakan isi formulir pelimpahan yang tersedia di website ini dan pastikan semua informasi yang diberikan akurat.
+                        {{ $informasi[2]['isi_informasi'] }}
                     </p>
                     <button class="btn btn-sm btn-warning" type="button" @click="informasi = ''"><i class="ri-close-line"></i> Tutup Informasi</button>
                 </div>

@@ -4,7 +4,9 @@ namespace App\Livewire;
 
 use App\Models\Cancel;
 use App\Models\Delegation;
+use App\Models\InfoOption;
 use App\Models\Survey;
+use Illuminate\Console\View\Components\Info;
 use Livewire\Component;
 use Livewire\Attributes\Validate;
 
@@ -91,7 +93,7 @@ class Home extends Component
         } else {
             $data['target_type'] = 'pendaftaran';
         }
-        $data['target_id'] = 111111111;
+        $data['target_id'] = 'homepage';
 
         Survey::create($data);
 
@@ -270,6 +272,8 @@ class Home extends Component
 
     public function render()
     {
-        return view('livewire.home');
+        return view('livewire.home', [
+            'informasi' => InfoOption::all(),
+        ]);
     }
 }

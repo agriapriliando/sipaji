@@ -10,6 +10,7 @@ use App\Livewire\Feedback;
 use App\Livewire\FeedbackAdd;
 use App\Livewire\Grafik;
 use App\Livewire\Home;
+use App\Livewire\InfoOption;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -25,6 +26,7 @@ Route::get('/', Home::class)->name('home');
 Route::get('edit/{jenis}/{id}', Edit::class)->name('edit');
 Route::get('cetak/{jenis}/{id}', Cetak::class)->name('cetak');
 Route::get('survey', Home::class)->name('survey');
+Route::get('informasi', InfoOption::class)->name('informasi');
 Route::middleware(['auth'])->group(function () {
     Route::get('pembatalan', Cancel::class)->name('daftar.pembatalan');
     Route::get('pelimpahan', Delegation::class)->name('daftar.pelimpahan');

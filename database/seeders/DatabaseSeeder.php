@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             // CancelSeeder::class,
             // SurveySeeder::class,
             // FeedbackSeeder::class,
+            InfoOptionSeeder::class,
         ]);
     }
 }
