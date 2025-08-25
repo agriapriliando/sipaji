@@ -22,6 +22,16 @@
     <section class="container-fluid">
         <!-- Formulir Pembatalan -->
         <div class="card mb-4">
+            {{-- toast --}}
+            <div class="toast-container position-fixed top-0 start-50 translate-middle-x">
+                <div id="liveToast" class="toast mt-3" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <strong class="me-auto" id="pesan"></strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+            {{-- toast --}}
             <div class="card-header justify-content-between align-items-center d-flex">
                 <h3 class="card-title m-0">Sampaikan Kritik dan Saran</h3>
                 <a onclick="window.history.back();" class="btn btn-sm btn-success"><i class="ri-arrow-go-back-line"></i> Kembali</a>
@@ -103,6 +113,24 @@
 
 </main>
 <!-- /Page Content -->
+@script
+    <script>
+        $wire.on('savesuccess', (event) => {
+            var element = document.getElementById('liveToast');
+            console.log(event.message);
+            const myToast = bootstrap.Toast.getOrCreateInstance(element);
+            setTimeout(function() {
+                myToast.show();
+                document.getElementById('pesan').innerHTML = event.message;
+                element.className += " text-bg-success";
+                console.log(event.message);
+            }, 10);
+            setTimeout(function() {
+                myToast.hide();
+            }, 3000);
+        });
+    </script>
+@endscript
 
 @push('scriptsatas')
     <!-- Vendor CSS -->

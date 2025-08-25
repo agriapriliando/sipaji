@@ -7,7 +7,7 @@
             <nav class="mb-0" aria-label="breadcrumb">
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Edit Data Surat</li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Informasi</li>
                 </ol>
             </nav>
             <div class="d-flex justify-content-end align-items-center mt-3 mt-md-0">
@@ -93,7 +93,7 @@
 
                                     <!-- Tombol Submit -->
                                     <div class="row">
-                                        <div class="offset-sm-3 col-sm-9">
+                                        <div class="offset-sm-3 col-sm-9" x-data="{ open: false }">
                                             <button type="submit" class="btn btn-primary" :disabled="uploading" wire:loading.attr="disabled" wire:target="update,gambar">
                                                 Simpan Informasi
                                             </button>
@@ -101,6 +101,24 @@
                                                 <span class="visually-hidden">Loading...</span>
                                             </div>
                                             <span wire:loading wire:target="save">Silahkan Tunggu...</span>
+                                            <button type="button" class="btn btn-danger" @click="open = true" title="Hapus Data">
+                                                <i class="ri-delete-bin-line"> Hapus Gambar</i>
+                                            </button>
+                                            <div style="display: inline; wrap: nowrap;">
+                                                <!-- Modal Konfirmasi -->
+                                                <div x-show="open" x-transition
+                                                    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; z-index: 9999;">
+                                                    <div style="background: #fff; padding: 20px 24px; border-radius: 6px; min-width: 220px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15);"
+                                                        @click.away="open = false">
+                                                        <div style="margin-bottom: 16px; font-weight: bold;">Yakin ingin menghapus gambar ini?</div>
+                                                        <button type="button"
+                                                            style="background: #dc3545; color: #fff; border: none; padding: 5px 15px; border-radius: 3px; margin-right: 8px; cursor: pointer;"
+                                                            @click="$wire.deleteImg; open = false;">Ya, Hapus</button>
+                                                        <button type="button" style="background: #6c757d; color: #fff; border: none; padding: 5px 15px; border-radius: 3px; cursor: pointer;"
+                                                            @click="open = false">Batal</button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                             </form>

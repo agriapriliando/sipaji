@@ -39,6 +39,19 @@ class InfoOption extends Component
         $this->gambar         = null;          // reset file baru
     }
 
+    public function deleteImg()
+    {
+        if ($this->existing_gambar) {
+            Storage::disk('public')->delete($this->existing_gambar);
+            $this->existing_gambar = null;
+
+            // Update di DB
+            $info = \App\Models\InfoOption::findOrFail($this->infoOptionsId);
+            $info->update(['gambar' => null]);
+            session()->flash('success', 'Gambar berhasil Dihapus.');
+        }
+    }
+
     public function update()
     {
         $this->validate();

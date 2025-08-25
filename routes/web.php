@@ -26,12 +26,12 @@ Route::get('/', Home::class)->name('home');
 Route::get('edit/{jenis}/{id}', Edit::class)->name('edit');
 Route::get('cetak/{jenis}/{id}', Cetak::class)->name('cetak');
 Route::get('survey', Home::class)->name('survey');
-Route::get('informasi', InfoOption::class)->name('informasi');
 Route::middleware(['auth'])->group(function () {
     Route::get('pembatalan', Cancel::class)->name('daftar.pembatalan');
     Route::get('pelimpahan', Delegation::class)->name('daftar.pelimpahan');
     Route::get('kritiksaran', Feedback::class)->name('kritiksaran');
     Route::get('akunsaya', AkunSaya::class)->name('akunsaya');
+    Route::get('informasi', InfoOption::class)->name('informasi');
 });
 Route::get('grafik', Grafik::class)->name('grafik');
 Route::get('addkritiksaran', FeedbackAdd::class)->name('addkritiksaran');

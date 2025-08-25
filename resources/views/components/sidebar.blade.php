@@ -77,14 +77,6 @@
                                 Kritik dan Saran</span>
                         </a>
                     </li>
-                    <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('informasi') }}">
-                            <span class="menu-icon">
-                                <i class="ri-information-line"></i>
-                            </span>
-                            <span class="menu-link">
-                                Informasi</span>
-                        </a>
-                    </li>
                     <!-- / Dashboard Menu Section-->
 
                     @if (Auth::user())
@@ -119,6 +111,14 @@
                                         <i class="ri-feedback-line"></i>
                                     </span>
                                     <span class="menu-link">Daftar Kritik dan Saran</span>
+                                </a>
+                            </li>
+                            <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('informasi') }}">
+                                    <span class="menu-icon">
+                                        <i class="ri-information-line"></i>
+                                    </span>
+                                    <span class="menu-link">
+                                        Informasi</span>
                                 </a>
                             </li>
                         </div>
