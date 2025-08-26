@@ -14,8 +14,8 @@
     <div id="buttoncetak" class="button-87 noprint absolute">
         <button class="btn-print">
             <span style="margin-right: 10px;">
-                <i class="fa-solid fa-print" onclick="window.print()"></i>
                 @if ($datasurat->status_surveys == true)
+                    <i class="fa-solid fa-print" onclick="window.print()"></i>
                 @elseif ($datasurat->status_surveys == false)
                     <i x-show="btnprint" class="fa-solid fa-print d-none" role="button" tabindex="0" id="btnPrintIcon" title="Cetak"></i>
                 @endif
