@@ -104,7 +104,7 @@ class Home extends Component
     public function rules_pembatalan()
     {
         return [
-            'nomor_porsi'       => 'required|string|size:13|unique:cancels,nomor_porsi',
+            'nomor_porsi'       => 'required|string|unique:cancels,nomor_porsi',
             'nama'              => 'required|string|max:100',
             'bin_binti'         => 'nullable|string|max:100',
             'ttl_tempat'        => 'required|string|max:100',
@@ -120,7 +120,6 @@ class Home extends Component
         return [
             'nomor_porsi.required' => 'Nomor porsi haji wajib diisi.',
             'nomor_porsi.unique'   => 'Nomor porsi ini sudah terdaftar.',
-            'nomor_porsi.size'     => 'Nomor porsi harus 13 karakter.',
 
             'nama.required'        => 'Nama wajib diisi.',
             'nama.max'             => 'Nama maksimal 100 karakter.',
@@ -147,7 +146,7 @@ class Home extends Component
     public function rules_pelimpahan()
     {
         return [
-            'nomor_porsi'        => 'required|string|size:13|unique:delegations,nomor_porsi',
+            'nomor_porsi'        => 'required|string|unique:delegations,nomor_porsi',
             'nama_asal'          => 'required|string|max:100',
             'bin_binti_asal'     => 'nullable|string|max:100',
             'nama_penerima'      => 'required|string|max:100',
@@ -167,7 +166,6 @@ class Home extends Component
         return [
             'nomor_porsi.required'        => 'Nomor porsi wajib diisi.',
             'nomor_porsi.unique'          => 'Nomor porsi ini sudah terdaftar.',
-            'nomor_porsi.size'             => 'Nomor porsi wajib 13 karakter.',
 
             'nama_asal.required'          => 'Nama asal wajib diisi.',
             'nama_asal.max'               => 'Nama asal maksimal 100 karakter.',
