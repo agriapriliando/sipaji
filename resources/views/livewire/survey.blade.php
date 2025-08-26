@@ -30,6 +30,7 @@
                 </ol>
             </nav>
             <div class="d-flex justify-content-end align-items-center mt-3 mt-md-0">
+                <a class="btn btn-outline-primary btn-sm text-body ms-2" wire:click="exportPdf"><i class="ri-file-pdf-fill"></i> Export</a>
                 <a class="btn btn-outline-primary btn-sm text-body ms-2" @click="copyTable"><i class="ri-file-copy-fill"></i> Copy</a>
             </div>
         </div>
