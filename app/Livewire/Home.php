@@ -12,7 +12,7 @@ use Livewire\Attributes\Validate;
 
 class Home extends Component
 {
-    public $jenissurat = 'pembatalan';
+    public $jenissurat = '';
 
     // 🔹 Property untuk pembatalan
     public $nomor_porsi;
@@ -228,7 +228,6 @@ class Home extends Component
 
         $this->idsurat = $data->id;
 
-
         $this->reset([
             'layanan',
             'kepuasan',
@@ -267,7 +266,6 @@ class Home extends Component
         $data = Delegation::create($validated);
 
         $this->idsurat = $data->id;
-
 
         $this->reset([
             'layanan',
