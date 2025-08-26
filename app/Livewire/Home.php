@@ -141,6 +141,7 @@ class Home extends Component
             'bin_binti_asal'     => 'nullable|string|max:100',
             'nama_penerima'      => 'required|string|max:100',
             'bin_binti_penerima' => 'nullable|string|max:100',
+            'jenis_kelamin'      => 'required|string',
             'ttl_tempat'         => 'required|string|max:100',
             'ttl_tanggal'        => 'required|date',
             'pekerjaan'          => 'required|string|max:100',
