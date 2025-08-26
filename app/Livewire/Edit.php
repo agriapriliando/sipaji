@@ -87,6 +87,7 @@ class Edit extends Component
             'bin_binti_asal'     => 'nullable|string|max:100',
             'nama_penerima'      => 'required|string|max:100',
             'bin_binti_penerima' => 'nullable|string|max:100',
+            'jenis_kelamin'      => 'required|string',
             'ttl_tempat'         => 'required|string|max:100',
             'ttl_tanggal'        => 'required|date',
             'pekerjaan'          => 'required|string|max:100',
@@ -112,6 +113,8 @@ class Edit extends Component
             'nama_penerima.max'           => 'Nama penerima maksimal 100 karakter.',
 
             'bin_binti_penerima.max'      => 'Bin/Binti penerima maksimal 100 karakter.',
+
+            'jenis_kelamin.required'      => 'Jenis kelamin wajib diisi.',
 
             'ttl_tempat.required'         => 'Tempat lahir wajib diisi.',
             'ttl_tempat.max'              => 'Tempat lahir maksimal 100 karakter.',
@@ -162,6 +165,7 @@ class Edit extends Component
             $this->bin_binti_asal     = $delegation->bin_binti_asal;
             $this->nama_penerima      = $delegation->nama_penerima;
             $this->bin_binti_penerima = $delegation->bin_binti_penerima;
+            $this->jenis_kelamin      = $delegation->jenis_kelamin;
             $this->ttl_tempat         = $delegation->ttl_tempat;
             $this->ttl_tanggal        = $delegation->ttl_tanggal->format('Y-m-d'); // untuk input date
             $this->pekerjaan          = $delegation->pekerjaan;
@@ -199,6 +203,7 @@ class Edit extends Component
                 'bin_binti_asal'     => $this->bin_binti_asal,
                 'nama_penerima'      => $this->nama_penerima,
                 'bin_binti_penerima' => $this->bin_binti_penerima,
+                'jenis_kelamin'      => $this->jenis_kelamin,
                 'ttl_tempat'         => $this->ttl_tempat,
                 'ttl_tanggal'        => $this->ttl_tanggal,
                 'pekerjaan'          => $this->pekerjaan,

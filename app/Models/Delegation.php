@@ -15,6 +15,7 @@ class Delegation extends Model
         'bin_binti_asal',
         'nama_penerima',
         'bin_binti_penerima',
+        'jenis_kelamin',
         'ttl_tempat',
         'ttl_tanggal',
         'pekerjaan',

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('nama_penerima', 150);
             $table->string('bin_binti_penerima', 150)->nullable();
 
+            $table->string('jenis_kelamin', 20);
             $table->string('ttl_tempat', 120);
             $table->date('ttl_tanggal');
 

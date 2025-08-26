@@ -313,7 +313,7 @@
             labels: ['Surat Pelimpahan', 'Surat Pembatalan'],
             datasets: [{
                 label: 'Surat',
-                data: [{{ $jumlah_pembatalan }}, {{ $jumlah_pelimpahan }}],
+                data: [{{ $jumlah_pelimpahan }}, {{ $jumlah_pembatalan }}],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(255, 159, 64, 0.2)',

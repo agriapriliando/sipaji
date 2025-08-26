@@ -14,10 +14,10 @@
     <div id="buttoncetak" class="button-87 noprint absolute">
         <button class="btn-print">
             <span style="margin-right: 10px;">
+                <i class="fa-solid fa-print" onclick="window.print()"></i>
                 @if ($datasurat->status_surveys == true)
-                    <i class="fa-solid fa-print" onclick="window.print()"></i>
                 @elseif ($datasurat->status_surveys == false)
-                    <i x-show="btnprint" class="fa-solid fa-print" role="button" tabindex="0" id="btnPrintIcon" title="Cetak"></i>
+                    <i x-show="btnprint" class="fa-solid fa-print d-none" role="button" tabindex="0" id="btnPrintIcon" title="Cetak"></i>
                 @endif
             </span>
             <span style="margin-right: 12px;">
@@ -297,7 +297,6 @@
                         <td width="10px;" style="vertical-align: top;">: </td>
                         <td width="250px;">
                             <span>{{ $datasurat->nama_penerima }}</span>
-                            <span class="noprint" style="font-style: italic;">(Nama Penerima Pelimpahan)</span>
                         </td>
                     </tr>
                     <tr>
@@ -306,7 +305,14 @@
                         <td style="vertical-align: top;">: </td>
                         <td>
                             <span>{{ $datasurat->bin_binti_asal ? $datasurat->bin_binti_asal : '-' }}</span>
-                            <span class="noprint" style="font-style: italic;">(Nama Ayah Penerima Pelimpahan)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Jenis Kelamin</td>
+                        <td>: </td>
+                        <td>
+                            <span>{{ $datasurat->jenis_kelamin === 'L' ? 'Laki-laki' : 'Perempuan' }}</span>
                         </td>
                     </tr>
                     <tr>

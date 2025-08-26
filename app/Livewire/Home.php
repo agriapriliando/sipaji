@@ -12,7 +12,7 @@ use Livewire\Attributes\Validate;
 
 class Home extends Component
 {
-    public $jenissurat = '';
+    public $jenissurat = 'pembatalan';
 
     // 🔹 Property untuk pembatalan
     public $nomor_porsi;
@@ -40,6 +40,9 @@ class Home extends Component
     public $kepuasan;
     public $kritik_saran;
 
+    public $showSurveyModal;
+    public $idsurat;
+
     public function rules_survey()
     {
         return [
@@ -66,8 +69,25 @@ class Home extends Component
 
         Survey::create($data);
 
+        $this->reset([
+            'layanan',
+            'kepuasan',
+            'kritik_saran',
+        ]);
+
+        if ($this->showSurveyModal) {
+            return redirect()->route('cetak', ['jenis' => $this->jenissurat, 'id' => $this->idsurat]);
+        }
+
         $this->dispatch('survey-success', message: 'Terima Kasih Telah Mengisi Survey Kepuasan!');
     }
+    /*************  ✨ Windsurf Command ⭐  *************/
+    /**
+     * Rules for validating form data of survey with Pembatalan Porsi Haji layanan.
+     *
+     * @return array<string, string>
+     */
+    /*******  ca75ae17-460b-4c10-89d7-1a4b2e90a44d  *******/
     public function rules_pembatalan()
     {
         return [
@@ -181,6 +201,20 @@ class Home extends Component
     //     dd($this->jenissurat);
     // }
 
+    public function resetsurvey()
+    {
+        $this->reset([
+            'layanan',
+            'kepuasan',
+            'kritik_saran',
+        ]);
+    }
+
+    public function tutupmodal()
+    {
+        $this->showSurveyModal = false;
+    }
+
     public function submitPembatalan()
     {
         // Validasi seluruh field
@@ -191,6 +225,19 @@ class Home extends Component
 
         // Simpan data (pastikan kolom fillable di model Cancel sudah benar)
         $data = Cancel::create($validated);
+
+        $this->idsurat = $data->id;
+
+
+        $this->reset([
+            'layanan',
+            'kepuasan',
+            'kritik_saran',
+        ]);
+
+        $this->showSurveyModal = true;
+
+        $this->addSurvey();
 
         // Reset form
         $this->reset([
@@ -204,7 +251,6 @@ class Home extends Component
             'alamat',
             'alasan_pembatalan',
         ]);
-
         // Redirect ke cetak
         return redirect()->route('cetak', ['jenis' => 'pembatalan', 'id' => $data->id]);
     }
@@ -213,11 +259,25 @@ class Home extends Component
     {
         // Validasi data sebelum menyimpan
         $validated = $this->validate($this->rules_pelimpahan(), $this->messages_pelimpahan());
+
         // dd($validated);
         // Simpan data Pelimpahan
         $validated['user_id'] = 1; // Tambahkan user_id
         // Simpan ke database
         $data = Delegation::create($validated);
+
+        $this->idsurat = $data->id;
+
+
+        $this->reset([
+            'layanan',
+            'kepuasan',
+            'kritik_saran',
+        ]);
+
+        $this->showSurveyModal = true;
+
+        $this->addSurvey();
 
         // reset form setelah submit
         $this->reset([
@@ -234,7 +294,6 @@ class Home extends Component
             'alasan_pelimpahan',
             'jenis_persyaratan',
         ]);
-
         // redirect ke halaman cetak pelimpahan
         return redirect()->route('cetak', ['jenis' => 'pelimpahan', 'id' => $data->id]);
     }

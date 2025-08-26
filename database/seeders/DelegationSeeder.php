@@ -50,6 +50,7 @@ class DelegationSeeder extends Seeder
                 'bin_binti_asal'     => $faker->boolean(70) ? 'bin ' . $faker->firstNameMale() : null,
                 'nama_penerima'      => $faker->name(),
                 'bin_binti_penerima' => $faker->boolean(70) ? 'bin ' . $faker->firstNameMale() : null,
+                'jenis_kelamin'      => $faker->randomElement(['L', 'P']),
                 'ttl_tempat'         => $faker->city(),
                 'ttl_tanggal'        => $faker->date('Y-m-d', '2003-12-31'),
                 'pekerjaan'          => $faker->boolean(80) ? $faker->jobTitle() : null,
