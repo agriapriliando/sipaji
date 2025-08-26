@@ -80,7 +80,6 @@
                                             <th scope="col">Kepuasan</th>
                                             <th scope="col">Kritik / Saran</th>
                                             <th scope="col">Tanggal</th>
-                                            <th scope="col"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -100,25 +99,26 @@
                                                 </td>
                                                 <td>
                                                     {{ $item->created_at->translatedFormat('d F Y h:i') }} WIB
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-danger btn-sm" @click="open = true" title="Hapus Data">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </button>
-                                                    <div style="display: inline; wrap: nowrap;">
-                                                        <!-- Modal Konfirmasi -->
-                                                        <div x-show="open" x-transition
-                                                            style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; z-index: 9999;">
-                                                            <div style="background: #fff; padding: 20px 24px; border-radius: 6px; min-width: 220px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15);"
-                                                                @click.away="open = false">
-                                                                <div style="margin-bottom: 16px; font-weight: bold;">Yakin ingin menghapus data {{ $item->nama }} ini?</div>
-                                                                <button
-                                                                    style="background: #dc3545; color: #fff; border: none; padding: 5px 15px; border-radius: 3px; margin-right: 8px; cursor: pointer;"
-                                                                    @click="$wire.delete('{{ $item->id }}'); open = false;">Ya, Hapus</button>
-                                                                <button style="background: #6c757d; color: #fff; border: none; padding: 5px 15px; border-radius: 3px; cursor: pointer;"
-                                                                    @click="open = false">Batal</button>
+                                                    <div class="d-none">
+                                                        <button class="btn btn-danger btn-sm" @click="open = true" title="Hapus Data">
+                                                            <i class="ri-delete-bin-line"></i>
+                                                        </button>
+                                                        <div style="display: inline; wrap: nowrap;">
+                                                            <!-- Modal Konfirmasi -->
+                                                            <div x-show="open" x-transition
+                                                                style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; z-index: 9999;">
+                                                                <div style="background: #fff; padding: 20px 24px; border-radius: 6px; min-width: 220px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15);"
+                                                                    @click.away="open = false">
+                                                                    <div style="margin-bottom: 16px; font-weight: bold;">Yakin ingin menghapus data {{ $item->nama }} ini?</div>
+                                                                    <button
+                                                                        style="background: #dc3545; color: #fff; border: none; padding: 5px 15px; border-radius: 3px; margin-right: 8px; cursor: pointer;"
+                                                                        @click="$wire.delete('{{ $item->id }}'); open = false;">Ya, Hapus</button>
+                                                                    <button style="background: #6c757d; color: #fff; border: none; padding: 5px 15px; border-radius: 3px; cursor: pointer;"
+                                                                        @click="open = false">Batal</button>
+                                                                </div>
                                                             </div>
                                                         </div>
+
                                                     </div>
                                                 </td>
                                             </tr>
