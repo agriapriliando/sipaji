@@ -62,7 +62,13 @@
                                 <option value="20">20 Item</option>
                                 <option value="{{ $data->total() }}">All {{ $data->total() }} Item</option>
                             </select>
-                            <form class="d-flex bg-light rounded px-3 me-2">
+                            <select wire:model.live="searchlayanan" class="form-select" id="" style="width: 200px;">
+                                <option value="">Semua Layanan</option>
+                                <option value="Pendaftaran Haji">Pendaftaran</option>
+                                <option value="Pembatalan Porsi Haji">Pembatalan</option>
+                                <option value="Pelimpahan Porsi Haji">Pelimpahan</option>
+                            </select>
+                            <form class="d-flex bg-light rounded px-3 me-2 d-none">
                                 <input wire:model.live.debounce="search" class="form-control border-0 bg-transparent px-0 py-2 me-5 fw-bolder" type="" placeholder="Cari Kritik / Saran"
                                     aria-label="Search">
                                 <button class="btn btn-link p-0 text-muted" type="submit"><i class="ri-search-2-line"></i></button>

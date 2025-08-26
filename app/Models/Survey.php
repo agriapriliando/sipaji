@@ -32,4 +32,12 @@ class Survey extends Model
         }
         return $query;
     }
+
+    public function scopeLayanan($query, $layanan)
+    {
+        if ($layanan) {
+            return $query->where('layanan', $layanan);
+        }
+        return $query;
+    }
 }

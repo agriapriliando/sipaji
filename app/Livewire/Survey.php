@@ -16,6 +16,7 @@ class Survey extends Component
     protected $paginationTheme = 'bootstrap';
     public $search = '';
     public $perPage = 5;
+    public $searchlayanan = '';
 
     public function delete($id)
     {
@@ -27,15 +28,16 @@ class Survey extends Component
 
     public function exportPdf()
     {
-        $q = ModelsSurvey::select('layanan', 'kepuasan', 'kritik_saran', 'created_at')->latest();
+        $q = ModelsSurvey::select('layanan', 'kepuasan', 'kritik_saran', 'created_at')->layanan($this->searchlayanan)->latest();
 
         $surveys = $q->get();
 
         $pdf = Pdf::loadView('pdf.surveys', [
-            'surveys' => $surveys
+            'surveys' => $surveys,
+            'layanan' => $this->searchlayanan,
         ])->setPaper('a4', 'potrait'); // Bisa 'portrait' jika mau
 
-        $filename = 'surveys_' . now()->format('Ymd_His') . '.pdf';
+        $filename = 'surveys_' . $this->searchlayanan . now()->format('Ymd_His') . '.pdf';
 
         // Kirim langsung sebagai download
         return response()->streamDownload(function () use ($pdf) {
@@ -47,6 +49,7 @@ class Survey extends Component
         return view('livewire.survey', [
             'data' => ModelsSurvey::search($this->search)
                 ->latest()
+                ->layanan($this->searchlayanan)
                 ->paginate($this->perPage),
         ]);
     }

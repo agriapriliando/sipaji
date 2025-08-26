@@ -66,7 +66,7 @@
 </head>
 
 <body>
-    <h2>Laporan Survey</h2>
+    <h2>Laporan Survey {{ $layanan }}</h2>
     <div class="meta">
         Diekspor: {{ now()->format('d M Y H:i') }} • Total baris: {{ $surveys->count() }}
     </div>
