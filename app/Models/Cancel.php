@@ -13,6 +13,7 @@ class Cancel extends Model
         'nomor_porsi',
         'nama',
         'bin_binti',
+        'jenis_kelamin',
         'ttl_tempat',
         'ttl_tanggal',
         'pekerjaan',

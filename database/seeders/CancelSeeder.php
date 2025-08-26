@@ -44,6 +44,7 @@ class CancelSeeder extends Seeder
                 'nomor_porsi'       => (string) $faker->numberBetween(1000000000000, 9999999999999),
                 'nama'              => $faker->name(),
                 'bin_binti'         => $faker->boolean(70) ? ($faker->boolean() ? 'bin ' : 'binti ') . $faker->firstName() : null,
+                'jenis_kelamin'      => $faker->randomElement(['Laki-laki', 'Perempuan']),
                 'ttl_tempat'        => $faker->city(),
                 'ttl_tanggal'       => $faker->date('Y-m-d', '2003-12-31'),
                 'pekerjaan'         => $faker->boolean(80) ? $faker->jobTitle() : null,

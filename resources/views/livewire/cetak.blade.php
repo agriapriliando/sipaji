@@ -17,7 +17,7 @@
                 @if ($datasurat->status_surveys == true)
                     <i class="fa-solid fa-print" onclick="window.print()"></i>
                 @elseif ($datasurat->status_surveys == false)
-                    <i x-show="btnprint" class="fa-solid fa-print d-none" role="button" tabindex="0" id="btnPrintIcon" title="Cetak"></i>
+                    <i x-show="btnprint" class="fa-solid fa-print" role="button" tabindex="0" id="btnPrintIcon" title="Cetak"></i>
                 @endif
             </span>
             <span style="margin-right: 12px;">
@@ -98,7 +98,10 @@
                     <td style="vertical-align: top;">Perihal</td>
                     <td style="width: 5px; vertical-align: top;">:</td>
                     <td style="width: 200px;">Mohon Pembatalan Calon Jemaah Haji dan Pengembalian Setoran BPIH Setor
-                        Awal An. <span class="bold">{{ $datasurat->nama }}</span> <span class="bold">{{ $datasurat->bin_binti ? 'Binti ' . $datasurat->bin_binti : '-' }}</span> Nomor Porsi
+                        Awal An. <span class="bold">{{ $datasurat->nama }}</span>
+                        <span class="bold">{{ $datasurat->jenis_kelamin === 'L' ? 'Bin' : 'Binti' }}</span>
+                        <span class="bold">{{ $datasurat->bin_binti ? $datasurat->bin_binti : '-' }}</span>
+                        Nomor Porsi
                         <span class="bold">{{ $datasurat->nomor_porsi }} </span>
                     </td>
                 </tr>
@@ -147,6 +150,14 @@
                         <td>: </td>
                         <td>
                             {{ $datasurat->bin_binti ? $datasurat->bin_binti : '-' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Jenis Kelamin</td>
+                        <td>: </td>
+                        <td>
+                            <span>{{ $datasurat->jenis_kelamin === 'L' ? 'Laki-laki' : 'Perempuan' }}</span>
                         </td>
                     </tr>
                     <tr>

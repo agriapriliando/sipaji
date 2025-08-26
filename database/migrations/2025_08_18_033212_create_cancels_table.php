@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('nomor_porsi', 100)->index();
             $table->string('nama', 150);
             $table->string('bin_binti', 150)->nullable();
+            $table->string('jenis_kelamin', 20);
 
             $table->string('ttl_tempat', 120);
             $table->date('ttl_tanggal');

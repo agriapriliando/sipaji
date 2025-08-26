@@ -354,6 +354,21 @@
                             </div>
                         </div>
 
+                        <!-- Jenis Kelamin -->
+                        <div class="mb-3 row">
+                            <label for="jenisKelamin" class="col-sm-3 col-form-label">Jenis Kelamin</label>
+                            <div class="col-sm-9">
+                                <select wire:model="jenis_kelamin" class="form-select" id="jenisKelamin">
+                                    <option value="">Pilih Jenis Kelamin</option>
+                                    <option value="L">Laki-laki</option>
+                                    <option value="P">Perempuan</option>
+                                </select>
+                                @error('jenis_kelamin')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+
                         <!-- Tempat, Tanggal Lahir -->
                         <div class="mb-3 row">
                             <label class="col-sm-3 col-form-label">Tempat, Tanggal Lahir</label>

@@ -18,6 +18,7 @@ class Home extends Component
     public $nomor_porsi;
     public $nama;
     public $bin_binti;
+    public $jenis_kelamin;
     public $ttl_tempat;
     public $ttl_tanggal;
     public $pekerjaan;
@@ -32,40 +33,6 @@ class Home extends Component
     public $nomor_hp;
     public $alasan_pelimpahan;
     public $jenis_persyaratan;
-
-    // #[Validate('required|string|max:50|unique:cancels,nomor_porsi')]
-    // public $nomor_porsi;
-    // #[Validate('required|string|max:100')]
-    // public $nama;
-    // #[Validate('nullable|string|max:100')]
-    // public $bin_binti;
-    // #[Validate('required|string|max:100')]
-    // public $ttl_tempat;
-    // #[Validate('required|date')]
-    // public $ttl_tanggal;
-    // #[Validate('required|string|max:100')]
-    // public $pekerjaan;
-    // #[Validate('required|string|max:255')]
-    // public $alamat;
-    // #[Validate('required|string|max:255')]
-    // public $alasan_pembatalan;
-
-    // #[Validate('required|string|max:100')]
-    // public string $nama_asal = '';
-    // #[Validate('nullable|string|max:100')]
-    // public ?string $bin_binti_asal = null;
-    // #[Validate('required|string|max:100')]
-    // public string $nama_penerima = '';
-    // #[Validate('nullable|string|max:100')]
-    // public ?string $bin_binti_penerima = null;
-    // #[Validate('required|string|max:15')]
-    // public string $nomor_hp = '';
-    // #[Validate('required|string|max:255')]
-    // public string $alasan_pelimpahan = '';
-    // #[Validate('required|in:0,1')]
-    // public string $status_surveys = '0'; // misalnya 0 = belum, 1 = sudah
-    // #[Validate('required|string|max:50')]
-    // public string $jenis_persyaratan = '';
 
     public $target_type;
     public $target_id = null;
@@ -97,8 +64,6 @@ class Home extends Component
 
         Survey::create($data);
 
-        // $this->reset();
-
         $this->dispatch('survey-success', message: 'Terima Kasih Telah Mengisi Survey Kepuasan!');
     }
     public function rules_pembatalan()
@@ -107,6 +72,7 @@ class Home extends Component
             'nomor_porsi'       => 'required|string|unique:cancels,nomor_porsi',
             'nama'              => 'required|string|max:100',
             'bin_binti'         => 'nullable|string|max:100',
+            'jenis_kelamin'      => 'required|string',
             'ttl_tempat'        => 'required|string|max:100',
             'ttl_tanggal'       => 'required|date',
             'pekerjaan'         => 'required|string|max:100',
@@ -125,6 +91,8 @@ class Home extends Component
             'nama.max'             => 'Nama maksimal 100 karakter.',
 
             'bin_binti.max'        => 'Bin/Binti maksimal 100 karakter.',
+
+            'jenis_kelamin.required' => 'Jenis kelamin wajib diisi.',
 
             'ttl_tempat.required'  => 'Tempat lahir wajib diisi.',
             'ttl_tempat.max'       => 'Tempat lahir maksimal 100 karakter.',
@@ -227,6 +195,7 @@ class Home extends Component
             'nomor_porsi',
             'nama',
             'bin_binti',
+            'jenis_kelamin',
             'ttl_tempat',
             'ttl_tanggal',
             'pekerjaan',

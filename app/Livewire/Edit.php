@@ -17,6 +17,7 @@ class Edit extends Component
     public $nomor_porsi;
     public $nama;
     public $bin_binti;
+    public $jenis_kelamin;
     public $ttl_tempat;
     public $ttl_tanggal;
     public $pekerjaan;
@@ -36,9 +37,10 @@ class Edit extends Component
     public function rules_pembatalan()
     {
         return [
-            'nomor_porsi'       => 'required|string|size:13|unique:cancels,nomor_porsi,' . $this->id,
+            'nomor_porsi'       => 'required|string|unique:cancels,nomor_porsi,' . $this->id,
             'nama'              => 'required|string|max:100',
             'bin_binti'         => 'nullable|string|max:100',
+            'jenis_kelamin'      => 'required|string',
             'ttl_tempat'        => 'required|string|max:100',
             'ttl_tanggal'       => 'required|date',
             'pekerjaan'         => 'required|string|max:100',
@@ -52,12 +54,13 @@ class Edit extends Component
         return [
             'nomor_porsi.required' => 'Nomor porsi haji wajib diisi.',
             'nomor_porsi.unique'   => 'Nomor porsi ini sudah terdaftar.',
-            'nomor_porsi.size'     => 'Nomor porsi harus 13 Karakter.',
 
             'nama.required'        => 'Nama wajib diisi.',
             'nama.max'             => 'Nama maksimal 100 karakter.',
 
             'bin_binti.max'        => 'Bin/Binti maksimal 100 karakter.',
+
+            'jenis_kelamin.required' => 'Jenis kelamin wajib diisi.',
 
             'ttl_tempat.required'  => 'Tempat lahir wajib diisi.',
             'ttl_tempat.max'       => 'Tempat lahir maksimal 100 karakter.',
@@ -79,7 +82,7 @@ class Edit extends Component
     public function rules_pelimpahan()
     {
         return [
-            'nomor_porsi'        => 'required|string|size:13|unique:delegations,nomor_porsi,' . $this->id,
+            'nomor_porsi'        => 'required|string|unique:delegations,nomor_porsi,' . $this->id,
             'nama_asal'          => 'required|string|max:100',
             'bin_binti_asal'     => 'nullable|string|max:100',
             'nama_penerima'      => 'required|string|max:100',
@@ -99,7 +102,6 @@ class Edit extends Component
         return [
             'nomor_porsi.required'        => 'Nomor porsi wajib diisi.',
             'nomor_porsi.unique'          => 'Nomor porsi ini sudah terdaftar.',
-            'nomor_porsi.size'             => 'Nomor porsi wajib 13 karakter.',
 
             'nama_asal.required'          => 'Nama asal wajib diisi.',
             'nama_asal.max'               => 'Nama asal maksimal 100 karakter.',
@@ -146,6 +148,7 @@ class Edit extends Component
             $this->nomor_porsi      = $cancel->nomor_porsi;
             $this->nama             = $cancel->nama;
             $this->bin_binti        = $cancel->bin_binti;
+            $this->jenis_kelamin    = $cancel->jenis_kelamin;
             $this->ttl_tempat       = $cancel->ttl_tempat;
             $this->ttl_tanggal      = $cancel->ttl_tanggal->format('Y-m-d'); // untuk input date
             $this->pekerjaan        = $cancel->pekerjaan;
@@ -179,6 +182,7 @@ class Edit extends Component
                 'nomor_porsi'       => $this->nomor_porsi,
                 'nama'              => $this->nama,
                 'bin_binti'         => $this->bin_binti,
+                'jenis_kelamin'     => $this->jenis_kelamin,
                 'ttl_tempat'        => $this->ttl_tempat,
                 'ttl_tanggal'       => $this->ttl_tanggal,
                 'pekerjaan'         => $this->pekerjaan,
