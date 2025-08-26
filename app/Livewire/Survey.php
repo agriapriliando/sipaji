@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Livewire;
+
+use App\Models\Survey as ModelsSurvey;
+use Illuminate\Database\Eloquent\Model;
+use Livewire\Component;
+use Livewire\WithPagination;
+
+class Survey extends Component
+{
+    use WithPagination;
+
+    // biar bisa pakai bootstrap style
+    protected $paginationTheme = 'bootstrap';
+    public $search = '';
+    public $perPage = 5;
+
+    public function delete($id)
+    {
+        $survey = ModelsSurvey::findOrFail($id);
+        $survey->delete();
+
+        $this->dispatch('deleted-success', message: 'Data Survey berhasil dihapus!');
+    }
+    public function render()
+    {
+        return view('livewire.survey', [
+            'data' => ModelsSurvey::search($this->search)
+                ->latest()
+                ->paginate($this->perPage),
+        ]);
+    }
+}

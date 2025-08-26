@@ -69,14 +69,6 @@
                                 Grafik
                             </span></a>
                     </li>
-                    <li class="menu-item bg-warning"><a class="d-flex align-items-center" href="{{ route('addkritiksaran') }}">
-                            <span class="menu-icon">
-                                <i class="ri-feedback-line"></i>
-                            </span>
-                            <span class="menu-link">
-                                Kritik dan Saran</span>
-                        </a>
-                    </li>
                     <!-- / Dashboard Menu Section-->
 
                     @if (Auth::user())
@@ -106,11 +98,11 @@
                                     <span class="menu-link">Survey</span>
                                 </a>
                             </li>
-                            <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('kritiksaran') }}">
+                            <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('surveyall') }}">
                                     <span class="menu-icon">
                                         <i class="ri-feedback-line"></i>
                                     </span>
-                                    <span class="menu-link">Daftar Kritik dan Saran</span>
+                                    <span class="menu-link">Hasil Survey</span>
                                 </a>
                             </li>
                             <li class="menu-item"><a class="d-flex align-items-center" href="{{ route('informasi') }}">

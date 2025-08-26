@@ -15,21 +15,21 @@
                     Baru</a>
                 <a class="btn btn-sm btn-secondary-faded ms-2 text-body d-none" href="#"><i class="ri-question-line align-bottom"></i> Help</a>
             </div>
-            {{-- toast --}}
-            <div class="toast-container position-fixed top-0 start-50 translate-middle-x">
-                <div id="liveToast" class="toast mt-3" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="toast-header">
-                        <strong class="me-auto" id="pesan"></strong>
-                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                    </div>
-                </div>
-            </div>
-            {{-- toast --}}
         </div>
     </div> <!-- / Breadcrumbs-->
 
     <!-- Content-->
-    <section class="container-fluid" x-data="{ informasi: '', survey: '' }">
+    <section class="container-fluid" x-data="{ informasi: '', survey: 'terbuka' }">
+        {{-- toast --}}
+        <div class="toast-container position-fixed top-0 start-50 translate-middle-x">
+            <div id="liveToast" class="toast mt-3" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <strong class="me-auto" id="pesan"></strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+        {{-- toast --}}
         <div class="row my-2">
             <div class="col-12 d-flex justify-content-center align-items-center text-center">
                 <img src="{{ asset('assets/kemenag-logo-192x192.png') }}" width="100" alt="">
@@ -44,10 +44,10 @@
             </div>
         @endif
         <div class="row mb-2">
-            <div class="col-6 d-grid mb-1">
+            <div class="col-6 d-grid mb-1 d-none">
                 <a href="{{ route('addkritiksaran') }}" class="btn btn-warning" type="button">Kritik dan Saran</a>
             </div>
-            <div class="col-6 d-grid mb-1">
+            <div class="col-12 d-grid mb-1">
                 <button @click="survey = 'terbuka'" class="btn btn-success" type="button">Surveys</button>
             </div>
         </div>
@@ -67,21 +67,22 @@
 
                     <!-- Pilih Layanan -->
                     <h3 class="survey-title">Survey Kepuasan Pelayanan :</h3>
+                    <p class="text-muted">Bantu kami mengisi survey ini agar kami dapat meningkatkan pelayanan</p>
                     <div class="survey-options">
                         <label class="survey-option layanan">
-                            <input type="radio" wire:model.live="layanan" value="pendaftaran" required>
+                            <input type="radio" wire:model.live="layanan" value="Pendaftaran Haji" required>
                             <div class="icon">🕌</div>
                             <span>Pendaftaran Haji</span>
                         </label>
 
                         <label class="survey-option layanan">
-                            <input type="radio" wire:model.live="layanan" value="pembatalan" required>
+                            <input type="radio" wire:model.live="layanan" value="Pembatalan Porsi Haji" required>
                             <div class="icon">❌</div>
                             <span>Pembatalan</span>
                         </label>
 
                         <label class="survey-option layanan">
-                            <input type="radio" wire:model.live="layanan" value="pelimpahan" required>
+                            <input type="radio" wire:model.live="layanan" value="Pelimpahan Porsi Haji" required>
                             <div class="icon">🔄</div>
                             <span>Pelimpahan Porsi Haji</span>
                         </label>
@@ -109,9 +110,22 @@
                         <div class="error">{{ $message }}</div>
                     @enderror
 
+                    <!-- Kritik Saran -->
+                    <div class="mb-3 row">
+                        <label for="kritik_saran">Apakah ada hal lain yang ingin anda sampaikan?</label>
+                        <div>
+                            <textarea wire:model="kritik_saran" class="form-control" id="kritik_saran" rows="3" placeholder="Masukan Kritik dan Saran Anda"></textarea>
+                            @error('kritik_saran')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
+
                     <!-- Submit -->
                     @if ($kepuasan != '' && $layanan != '')
                         <button type="submit" class="btn-submit" @click="survey = ''">Kirim Surveys</button>
+                        <br>
+                        <p>Terima Kasih atas waktu dan tanggapan Anda</p>
                     @endif
                 </form>
 

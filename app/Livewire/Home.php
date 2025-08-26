@@ -38,14 +38,16 @@ class Home extends Component
     public $target_id = null;
     public $layanan;
     public $kepuasan;
+    public $kritik_saran;
 
     public function rules_survey()
     {
         return [
             'target_type' => 'nullable|string|max:255',
             'target_id'   => 'nullable|integer',
-            'layanan'     => 'required|in:pendaftaran,pembatalan,pelimpahan',
+            'layanan'     => 'required',
             'kepuasan'    => 'required|in:puas,tidak_puas',
+            'kritik_saran' => 'nullable|string|max:1000',
         ];
     }
 
@@ -53,12 +55,12 @@ class Home extends Component
     {
         $data = $this->validate($this->rules_survey());
 
-        if ($this->layanan == 'pembatalan') {
+        if ($this->layanan == 'Pembatalan Porsi Haji') {
             $data['target_type'] = Cancel::class;
-        } elseif ($this->layanan == 'pelimpahan') {
+        } elseif ($this->layanan == 'Pelimpahan Porsi Haji') {
             $data['target_type'] = Delegation::class;
         } else {
-            $data['target_type'] = 'pendaftaran';
+            $data['target_type'] = 'Pendaftaran Haji';
         }
         $data['target_id'] = 'homepage';
 

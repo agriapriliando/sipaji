@@ -11,6 +11,7 @@ class Survey extends Model
         'target_id',
         'layanan',
         'kepuasan',
+        'kritik_saran',
     ];
 
     /**
@@ -20,5 +21,15 @@ class Survey extends Model
     public function target()
     {
         return $this->morphTo();
+    }
+
+    public function scopeSearch($query, $term)
+    {
+        if ($term) {
+            return $query->where(function ($q) use ($term) {
+                $q->where('kritik_saran', 'like', "%{$term}%");
+            });
+        }
+        return $query;
     }
 }
