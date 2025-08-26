@@ -50,7 +50,7 @@ class Grafik extends Component
             SUM(CASE WHEN kepuasan = 'puas' THEN 1 ELSE 0 END) as puas,
             SUM(CASE WHEN kepuasan = 'tidak_puas' THEN 1 ELSE 0 END) as tidak_puas,
             COUNT(*) as total
-        ")->where('layanan', 'pendaftaran')->first();
+        ")->where('layanan', 'Pendaftaran Haji')->first();
 
         $this->pendaftaran_puas = $pendaftaran->puas ?? 0;
         $this->pendaftaran_tidak_puas = $pendaftaran->tidak_puas ?? 0;
@@ -61,7 +61,7 @@ class Grafik extends Component
             SUM(CASE WHEN kepuasan = 'puas' THEN 1 ELSE 0 END) as puas,
             SUM(CASE WHEN kepuasan = 'tidak_puas' THEN 1 ELSE 0 END) as tidak_puas,
             COUNT(*) as total
-        ")->where('layanan', 'pembatalan')->first();
+        ")->where('layanan', 'Pembatalan Porsi Haji')->first();
 
         $this->pembatalan_puas = $pembatalan->puas ?? 0;
         $this->pembatalan_tidak_puas = $pembatalan->tidak_puas ?? 0;
@@ -72,7 +72,7 @@ class Grafik extends Component
             SUM(CASE WHEN kepuasan = 'puas' THEN 1 ELSE 0 END) as puas,
             SUM(CASE WHEN kepuasan = 'tidak_puas' THEN 1 ELSE 0 END) as tidak_puas,
             COUNT(*) as total
-        ")->where('layanan', 'pelimpahan')->first();
+        ")->where('layanan', 'Pelimpahan Porsi Haji')->first();
 
         $this->pelimpahan_puas = $pelimpahan->puas ?? 0;
         $this->pelimpahan_tidak_puas = $pelimpahan->tidak_puas ?? 0;
