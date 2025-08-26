@@ -2,7 +2,7 @@
 <main id="main">
 
     <!-- Breadcrumbs-->
-    <div class="bg-white border-bottom py-3 mb-2">
+    <div class="bg-white border-bottom py-3 mb-2 d-none">
         <div class="container-fluid d-flex justify-content-between align-items-start align-items-md-center flex-column flex-md-row">
             <nav class="mb-0" aria-label="breadcrumb">
                 <ol class="breadcrumb m-0">
@@ -30,6 +30,14 @@
 
     <!-- Content-->
     <section class="container-fluid" x-data="{ informasi: '', survey: '' }">
+        <div class="row my-2">
+            <div class="col-12 d-flex justify-content-center align-items-center text-center">
+                <img src="{{ asset('assets/kemenag-logo-192x192.png') }}" width="100" alt="">
+                <h2 class="fs-4 fw-bold mb-2">Pusat Layanan Haji dan Umrah Terpadu <br>
+                    Kementerian Agama Kabupaten Katingan
+                </h2>
+            </div>
+        </div>
         @if (session()->has('success'))
             <div class="alert alert-success mt-3">
                 {{ session('success') }}

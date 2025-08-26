@@ -7,7 +7,7 @@
     <main id="main">
 
         <!-- Breadcrumbs-->
-        <div class="bg-white border-bottom py-3 mb-2">
+        <div class="bg-white border-bottom py-3 mb-2 d-none">
             <div class="container-fluid d-flex justify-content-between align-items-start align-items-md-center flex-column flex-md-row">
                 <nav class="mb-0" aria-label="breadcrumb">
                     <ol class="breadcrumb m-0">
@@ -24,6 +24,16 @@
         <!-- Content-->
         <section class="container-fluid">
 
+            <div class="row my-2">
+                <div class="col-12 d-flex justify-content-center align-items-center text-center">
+                    <div class="me-2">
+                        <img src="{{ asset('assets/kemenag-logo-192x192.png') }}" width="100" alt="">
+                    </div>
+                    <h2 class="fs-5 fw-bold mb-2">Pusat Layanan Haji dan Umrah Terpadu <br>
+                        Kementerian Agama Kabupaten Katingan
+                    </h2>
+                </div>
+            </div>
             <div class="card mb-4">
                 <div class="card-header text-center">
                     <h3 class="card-title m-0">Login</h3>
@@ -69,11 +79,7 @@
                 </div>
             </div>
 
-            <!-- Footer -->
-            <footer class="footer">
-                <p class="small text-muted m-0">All rights reserved | © {{ date('Y') }}</p>
-                <p class="small text-muted m-0">Template created by <a href="https://www.pixelrocket.store/">PixelRocket</a></p>
-            </footer>
+            <x-footer></x-footer>
 
             <!-- Sidebar Menu Overlay-->
             <div class="menu-overlay-bg"></div>
