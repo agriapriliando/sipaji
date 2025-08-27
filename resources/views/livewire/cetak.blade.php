@@ -25,11 +25,11 @@
                     <i class="fa-solid fa-pencil"></i>
                 </a>
             </span>
-            <span>
-                <a href="{{ route('home') }}" class="text-white">
+            <a href="{{ route('home') }}" class="text-white">
+                <span>
                     <i class="fa-solid fa-home"></i>
-                </a>
-            </span>
+                </span>
+            </a>
         </button>
     </div>
     <!-- Modal Survei -->

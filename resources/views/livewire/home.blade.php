@@ -657,7 +657,7 @@
                         <div class="mb-3 row">
                             <label for="alasan_pembatalan" class="col-sm-3 col-form-label">Alasan Pembatalan</label>
                             <div class="col-sm-9">
-                                <textarea wire:model="alasan_pembatalan" class="form-control" id="alasan_pembatalan" rows="3" placeholder="Masukkan Alasan Pembatalan"></textarea>
+                                <textarea wire:model="alasan_pembatalan" class="form-control" id="alasan_pembatalan" rows="3" placeholder="Contoh : Saya mengalami sakit permanen"></textarea>
                                 @error('alasan_pembatalan')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
@@ -824,7 +824,8 @@
                         <div class="mb-3 row">
                             <label for="alasan_pelimpahan" class="col-sm-3 col-form-label">Alasan Pelimpahan</label>
                             <div class="col-sm-9">
-                                <input type="text" wire:model="alasan_pelimpahan" class="form-control" id="alasan_pelimpahan" placeholder="Cantumkan Alasan Pelimpahan secara detail">
+                                <input type="text" wire:model="alasan_pelimpahan" class="form-control" id="alasan_pelimpahan"
+                                    placeholder="Contoh: Ibu Saya An. ...... Meninggal Dunia / Sakit Keras">
                                 @error('alasan_pelimpahan')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror

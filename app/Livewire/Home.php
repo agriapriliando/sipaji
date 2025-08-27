@@ -76,6 +76,7 @@ class Home extends Component
         ]);
 
         if ($this->showSurveyModal) {
+            $this->showSurveyModal = false;
             return redirect()->route('cetak', ['jenis' => $this->jenissurat, 'id' => $this->idsurat]);
         }
 
