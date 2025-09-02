@@ -320,7 +320,7 @@
                         <td>Tempat Tgl Lahir</td>
                         <td>: </td>
                         <td>
-                            <span>Kandangan, 21 Juli 1959</span>
+                            <span>{{ $datasurat->ttl_tempat }}, {{ $datasurat->ttl_tanggal->translatedFormat('d F Y') }}</span>
                         </td>
                     </tr>
                     <tr>
@@ -328,7 +328,7 @@
                         <td>Pekerjaan</td>
                         <td>: </td>
                         <td>
-                            <span>Mengurus Rumah Tangga </span>
+                            <span>{{ $datasurat->pekerjaan }}</span>
                         </td>
                     </tr>
                     <tr style="vertical-align: top;">
@@ -337,10 +337,8 @@
                         <td>: </td>
                         <td>
                             <span>
-                                Jalan Banama RT RW Desan Samba, Kec Katingan Tengah,
-                                Kab. Katingan, Prov Kalteng
+                                {{ $datasurat->alamat }}
                             </span>
-                            </textarea>
                         </td>
                     </tr>
                     <tr>
@@ -348,7 +346,9 @@
                         <td>Nomor HP</td>
                         <td>: </td>
                         <td>
-                            <span>085249441182 </span>
+                            <span>
+                                {{ $datasurat->nomor_hp ? $datasurat->nomor_hp : '-' }}
+                            </span>
                         </td>
                     </tr>
                 </tbody>
