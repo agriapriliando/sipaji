@@ -220,10 +220,10 @@
                         <td style="width: 60%;"></td>
                         <td>Pemohon,</td>
                     </tr>
-                    <tr height="100px">
+                    <tr height="90px">
                         <td></td>
                         <td>
-                            <span style="border: 1px solid black;">Materai Rp 10.000</span>
+                            <span style="border: 1px solid black; display: none;">Materai Rp 10.000</span>
                         </td>
                     </tr>
                     <tr>
@@ -403,10 +403,10 @@
                         <td style="width: 60%;"></td>
                         <td>Pemohon,</td>
                     </tr>
-                    <tr height="100px">
+                    <tr height="90px">
                         <td></td>
                         <td>
-                            <span style="border: 1px solid black;">Materai Rp 10.000</span>
+                            <span style="border: 1px solid black; display: none;">Materai Rp 10.000</span>
                         </td>
                     </tr>
                     <tr>
