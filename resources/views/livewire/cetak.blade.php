@@ -255,7 +255,11 @@
                 <tr>
                     <td style="vertical-align: top;">Perihal</td>
                     <td style="width: 5px; vertical-align: top;">:</td>
-                    <td style="width: 200px;">Mohon Pelimpahan Nomor Porsi Jamaah Haji An. <span class="bold">{{ $datasurat->nama_asal }}</span> Nomor Porsi
+                    <td style="width: 200px;">Mohon Pelimpahan Nomor Porsi Jamaah Haji
+                        An. <span class="bold">{{ $datasurat->nama_asal }}</span>
+                        <span class="bold">{{ $datasurat->jenis_kelamin === 'L' ? 'Bin' : 'Binti' }}</span>
+                        <span class="bold">{{ $datasurat->bin_binti_asal ? $datasurat->bin_binti_asal : '-' }}</span>
+                        Nomor Porsi
                         <span class="bold">{{ $datasurat->nomor_porsi }}</span>
                     </td>
                 </tr>
@@ -304,7 +308,7 @@
                         <td style="vertical-align: top;">Bin/Binti</td>
                         <td style="vertical-align: top;">: </td>
                         <td>
-                            <span>{{ $datasurat->bin_binti_asal ? $datasurat->bin_binti_asal : '-' }}</span>
+                            <span>{{ $datasurat->bin_binti_penerima ? $datasurat->bin_binti_penerima : '-' }}</span>
                         </td>
                     </tr>
                     <tr>
